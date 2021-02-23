@@ -1,0 +1,24 @@
+.homepage_wrapper{
+    background: #FDF7F4;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.homepage_title{
+    padding: 80px;
+    font-family: $font-1;
+    font-weight: normal;
+    font-size: 10rem;
+    //background: conic-gradient(from 180deg at 50% 50%, rgba(52, 102, 105, 0) -18.75deg, rgba(216, 40, 40, 0.84) 136.88deg, rgba(51, 71, 250, 0.79) 185.62deg, rgba(212, 40, 216, 0.604167) 258.75deg, rgba(52, 102, 105, 0) 341.25deg, rgba(216, 40, 40, 0.84) 496.88deg);
+    background: conic-gradient(from 180deg at 50% 50%, rgba(52, 102, 105, 0) -18.75deg, rgba(216, 40, 40, 0.84) 116.25deg, rgba(51, 71, 250, 0.79) 211.88deg, rgba(212, 40, 216, 0.604167) 279.38deg, rgba(52, 102, 105, 0) 341.25deg, rgba(216, 40, 40, 0.84) 476.25deg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.homepage_desc{
+   // padding-top: 20px;
+    font-family: $font-2;
+    font-size:2rem;
+    font-weight: normal;
+    // padding-right: 100px;
+    // padding-left: 100px;
+}
