@@ -29,7 +29,7 @@ export default class Loginpage extends Component {
                           </div>
                           <Button variant="contained" className="google_btn">Continue with google <img src={Google}/></Button> 
                        </div>
-                       <div className="d-flex mt-5">
+                       <div className="d-flex mt-3">
                            <h4>New here, </h4>
                            <h4 className="pl-1 pr-1 sup_color">Signup </h4> 
                            <h4>to enjoy our services</h4>
