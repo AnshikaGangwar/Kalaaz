@@ -8,7 +8,7 @@ export default class Loginpage extends Component {
         return (
             
             <div className="container-fluid login_wrapper vh-100">
-               <Navbar navlink1="Home" navlink2="SignUP"/>
+               <Navbar navlink1="Home" navlink2="Signup"/>
                  <div className="inner_wrapper">
                    <form className="container login_card">
                       <div className="inner_form w-100">

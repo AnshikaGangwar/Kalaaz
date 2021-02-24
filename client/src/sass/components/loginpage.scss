@@ -49,7 +49,7 @@
            }
            .login_text{
             // margin-top: 40px;
-             padding:50px;
+             padding:30px;
             color:#333333;
            // border: 0.1rem solid #707070;
             font-family: $font-2;
@@ -79,4 +79,7 @@
        
    }
   
+}
+.MuiButton-root{
+    text-transform: none !important;
 }
