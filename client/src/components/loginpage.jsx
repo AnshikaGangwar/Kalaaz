@@ -4,11 +4,21 @@ import Navbar from './navbar'
 import Google from '../assets/google_img.svg'
 
 export default class Loginpage extends Component {
+    state={
+        username: "",
+        password: "",
+    }
+    onChangehandler= (event)=>{
+        const name= event.target.value;
+        const place=event.target.name;
+        this.setState({place: name});
+    }
+
     render() {
         return (
             
             <div className="container-fluid login_wrapper vh-100">
-               <Navbar navlink1="Home" navlink2="SignUP"/>
+               <Navbar navlink1="Home" navlink2="SignUP" navlink1_link="/" navlink2_link="/signup" />
                  <div className="inner_wrapper">
                    <form className="container login_card">
                       <div className="inner_form w-100">

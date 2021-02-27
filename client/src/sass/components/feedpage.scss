@@ -1,0 +1,60 @@
+.feedpage_wrapper{
+    background: #FDF7F4;
+    overflow: hidden;
+    .feed_container{
+        overflow-y: scroll;
+        height: 80vh;
+        // box-sizing: content-box;
+        box-sizing: border-box;
+    }
+    .post_wrapper{
+        background: #FFFFFF;
+        border-radius: 1rem;
+        width: 60%;
+        margin-top: 7%;
+       // overflow-y: scroll;
+        .post_userimage{
+            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            object-fit: contain;
+            background: #FFFFFF;
+        }
+    }
+    .feedpage_titlebar{
+        background: #FFFFFF;
+        width: 60%;
+        display:flex;
+        justify-content: space-between;
+       .feed_title{
+           font-family: $font-2;
+           font-size: 2.5rem;
+           color: #333333;
+        }
+     }
+     .userimage_wrapper{
+         margin-top: 50px;
+         .userimage{
+             border-radius: 50%;
+             height : 150px;
+             width: 150px;
+             object-fit: contain;
+             background: #FFFFFF;
+         }
+         .info_tags{
+            .info_text{
+                font-family: $font-2;
+                padding: 10px;
+            }
+         }
+     }
+     .userdetails_wrapper{
+          margin-top:50px;
+        .username{
+            font-family: $font-3;
+        }
+        .user_follow{
+            font-family: $font-2;
+        }
+     }
+}

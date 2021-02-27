@@ -14,8 +14,8 @@ export default class navbar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="w-100 justify-content-end">
-                    <Nav.Link href="#home" className="nav_text mr-4">{this.props.navlink1}</Nav.Link>
-                    <Nav.Link href="#link" className="nav_text">{this.props.navlink2}</Nav.Link>
+                    <Nav.Link href={this.props.navlink1_link} className="nav_text mr-4">{this.props.navlink1}</Nav.Link>
+                    <Nav.Link href={this.props.navlink2_link} className="nav_text">{this.props.navlink2}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 </Navbar>

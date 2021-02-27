@@ -4,6 +4,7 @@ import Navbar from './components/navbar'
 import Homepage from './components/homepage'
 import LoginPage from './components/loginpage'
 import SignupPage from './components/signuppage'
+import FeedPage from './components/feedpage'
 import './sass/main.scss'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' exact component={Homepage} />
           <Route path='/login' exact component={LoginPage} />
           <Route path='/signup' exact component={SignupPage} />
+          <Route path='/feed' exact component={FeedPage} />
         </switch>
       </Router>
     </div>
