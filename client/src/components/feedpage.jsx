@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import plus from '../assets/plus.svg'
-import heart from '../assets/heart.svg'
-import Navbar from './navbar'
+import React, { Component } from 'react';
+import plus from '../assets/plus.svg';
+import heart from '../assets/heart.svg';
+import Navbar from './navbar';
+import Footer from '../common/footer';
 //import temp from '../assets/temp.jpg'
 import temp1 from '../assets/temp1.svg';
-import temp from '../assets/me_2.jpg'
+import temp from '../assets/me_2.jpg';
 
 export default class Feedpage extends Component {
     state={
@@ -100,6 +101,7 @@ export default class Feedpage extends Component {
                 </div>
                </div> 
               </div> 
+              <Footer color="#FDF7F4" />
             </div>
         )
     }

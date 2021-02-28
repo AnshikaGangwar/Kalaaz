@@ -1,0 +1,27 @@
+.footer_wrapper{
+    padding: 1%;
+    .footer_title{
+        font-family: $font-2;
+        color: #333333;
+        font-weight: 600;
+        padding-left: 10%;
+    }
+    .footer_text{
+        font-family: $font-2;
+        color: #333333;
+        width: 50%;
+        font-size: 1.2rem;
+        padding-left:10%;
+    }
+    .footer-link-heading{
+        font-family: $font-2;
+        color: #333333;
+        font-size: 1.3rem;
+    }
+    .footer-link{
+        font-family: $font-2;
+        color: #333333;
+        font-size: 1rem;
+    }
+
+}

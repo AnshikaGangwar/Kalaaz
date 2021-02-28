@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
-import Navbar from './navbar'
+import Navbar from './navbar';
+import Footer from '../common/footer';
 import Google from '../assets/google_img.svg'
 
 export default class Loginpage extends Component {
@@ -47,6 +48,7 @@ export default class Loginpage extends Component {
                      </div>
                    </form>
                 </div>
+                <Footer color="#FDF7F4" />
             </div>
         )
     }

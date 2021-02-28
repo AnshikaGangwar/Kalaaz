@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './navbar';
 import multi_img from '../assets/multiple_img.svg'
+import Footer from '../common/footer';
 
 export default class Homepage extends Component {
     render() {
@@ -19,6 +20,7 @@ export default class Homepage extends Component {
                 </span>
                 </div>
                 </div>
+                <Footer color="#FDF7F4" />
             </div>
         )
     }
