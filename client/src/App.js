@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router , Route } from 'react-router-dom'
-import Navbar from './components/navbar'
 import Homepage from './components/homepage'
 import LoginPage from './components/loginpage'
 import SignupPage from './components/signuppage'
 import FeedPage from './components/feedpage'
 import './sass/main.scss'
+import Showcase from './components/showcase'
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
           <Route path='/login' exact component={LoginPage} />
           <Route path='/signup' exact component={SignupPage} />
           <Route path='/feed' exact component={FeedPage} />
+          <Route path='/showcase' exact component={Showcase} />
         </switch>
       </Router>
     </div>
