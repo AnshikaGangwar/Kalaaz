@@ -36,15 +36,20 @@ export default class Feedpage extends Component {
     }
     render() {
         return (
+           
             <div className="container-fluid feedpage_wrapper vh-100">
+                <div className="navbar-wrapper">
                 <Navbar navlink1="Art Show" navlink2="Logout" />
+                </div>
                <div className="row"> 
-                <div className="col-md-7">
+                <div className="col-md-7 d-flex flex-column align-items-center ">
+                  <div className="container feed_col">
                    <div className="container feedpage_titlebar ">
                       <img src={plus}/>  
                       <h3 className="feed_title">Feeds</h3>
                       <img src={heart}/> 
                    </div>
+                  </div> 
                    <div className="feed_container">
                    {this.state.posts.map( post => (
                      
@@ -63,7 +68,7 @@ export default class Feedpage extends Component {
                    </div>
                 </div>
                <div className="col-md-5">
-                <div className="row">
+                <div className="row user_row">
                     <div className="col-md-4">
                        <div className="userimage_wrapper d-flex flex-column">
                           <div className="userimage">

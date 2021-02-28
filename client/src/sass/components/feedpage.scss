@@ -1,29 +1,17 @@
 .feedpage_wrapper{
     background: #FDF7F4;
-    overflow: hidden;
-    .feed_container{
-        overflow-y: scroll;
-        height: 80vh;
-        // box-sizing: content-box;
-        box-sizing: border-box;
-    }
-    .post_wrapper{
+    //position: fixed;
+    overflow: scroll;
+  .feed_col{
+      margin-top:80px;
+      background: #FDF7F4;
+      width: 100%;
+      height: 10%;
+      position:fixed;
+      .feedpage_titlebar{
+        
         background: #FFFFFF;
-        border-radius: 1rem;
-        width: 60%;
-        margin-top: 7%;
-       // overflow-y: scroll;
-        .post_userimage{
-            border-radius: 50%;
-            width: 4rem;
-            height: 4rem;
-            object-fit: contain;
-            background: #FFFFFF;
-        }
-    }
-    .feedpage_titlebar{
-        background: #FFFFFF;
-        width: 60%;
+        width: 42%;
         display:flex;
         justify-content: space-between;
        .feed_title{
@@ -32,8 +20,35 @@
            color: #333333;
         }
      }
-     .userimage_wrapper{
-         margin-top: 50px;
+
+   } 
+   .feed_container{
+       
+         margin-top: 90px;
+        .post_wrapper{
+            background: #FFFFFF;
+            border-radius: 1rem;
+            width: 60%;
+            margin-top: 10%;
+           // overflow-y: scroll;
+            .post_userimage{
+                border-radius: 50%;
+                width: 4rem;
+                height: 4rem;
+                object-fit: contain;
+                background: #FFFFFF;
+            }
+        }
+    }
+   
+   
+  
+  .user_row{
+      //position:fixed;
+      margin-top: 160px;
+    .userimage_wrapper{
+        position:fixed;
+        //  margin-top: 10%;
          .userimage{
              border-radius: 50%;
              height : 150px;
@@ -49,7 +64,8 @@
          }
      }
      .userdetails_wrapper{
-          margin-top:50px;
+        position:fixed;
+        //   margin-top:50px;
         .username{
             font-family: $font-3;
         }
@@ -57,4 +73,12 @@
             font-family: $font-2;
         }
      }
+  }
+}
+.navbar-wrapper{
+    background: #FDF7F4;
+    position:fixed;
+    z-index: 2;
+    width:100%;
+    padding-right: 2rem;
 }
