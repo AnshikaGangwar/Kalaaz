@@ -95,9 +95,8 @@
 }
 .bottom-wrapper{
   position: absolute;
-  width: 18rem;
-  height: 18rem;
-//     border: 2px solid rgba(black, 0.4);
+  width: 20rem !important;
+  height: 20rem !important;
   line-height: 200px;
   font-size: 40px;
   font-weight: bold;
@@ -111,9 +110,11 @@
 }
 
 .test_{
-  height: 100%;
-  width: 100%;
-  transform: rotateX(-90deg) translateZ(5rem);
+  height: 38rem !important;
+  width: 38rem !important;
+  border-radius: 50%;
+  transform: rotateX(-90deg) translateZ(-11.5rem) translateX(-13.5rem);
   background: rgba(#1f1f1f, 0.7); 
-  box-shadow: rgba(12, 71, 119, 0.25) 0px 54px 55px, rgba(12, 71, 119, 0.25) 0px -12px 30px, rgba(12, 71, 119, 0.25) 0px 4px 6px,rgba(12, 71, 119, 0.25) 0px 12px 13px, rgba(12, 71, 119, 0.25) 0px -3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.9) 3rem 3rem 3rem;
+  // box-shadow: rgba(0, 0, 0, 3) 0px 54px 55px, rgba(0, 0, 0, 1) 0px -12px 30px, rgba(0, 0, 0, 1) 0px 4px 6px,rgba(0, 0, 0, 1) 0px 12px 13px, rgba(0, 0, 0, 1) 0px -3px 5px;
 }
