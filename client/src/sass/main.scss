@@ -1,7 +1,25 @@
 @import "./abstracts/font.scss";
+
 @import "./components/navbar.scss";
+
 @import "./components/homepage.scss";
+
 @import "./components/loginpage.scss";
+
 @import "./components/feedpage.scss";
+
 @import "./components/footer.scss";
+
 @import "./components/showcase.scss";
+@import "./components/test.scss";
+
+
+html {
+    scroll-behavior: smooth;
+}
+img{
+    // pointer-events: none;
+}
+a{
+    text-decoration: none !important;
+}

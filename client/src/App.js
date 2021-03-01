@@ -5,7 +5,8 @@ import LoginPage from './components/loginpage'
 import SignupPage from './components/signuppage'
 import FeedPage from './components/feedpage'
 import './sass/main.scss'
-import Showcase from './components/showcase'
+import Showcase from './components/showcase';
+import TestPage from './components/test';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/signup' exact component={SignupPage} />
           <Route path='/feed' exact component={FeedPage} />
           <Route path='/showcase' exact component={Showcase} />
+          <Route path='/test' exact component={TestPage} />
         </switch>
       </Router>
     </div>

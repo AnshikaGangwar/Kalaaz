@@ -29,7 +29,7 @@ class Showcase extends Component {
                     </div>
                     </div>
                 </div>
-                <Footer color="#FDF7F4" />
+                <Footer color="transparent" />
             </div>
         );
     }
