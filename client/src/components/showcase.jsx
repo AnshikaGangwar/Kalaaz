@@ -12,7 +12,7 @@ class Showcase extends Component {
                 <div className="frame-wrapper">
                     <div class="slideshow">
                     <div class="content">
-                        
+                        <div>
                         <div class="slider-content">
                             <figure class="shadow"><img src={temp} /></figure>
                             <figure class="shadow"><img src={temp} /></figure>
@@ -24,6 +24,7 @@ class Showcase extends Component {
                             <figure class="shadow"><img src={temp} /></figure>
                             <figure class="shadow"><img src={temp} /></figure>
                             <figure class="shadow" ><img src={Np} /></figure>
+                        </div>    
                             <figure class="shadow test_"></figure>
                         </div>
                     </div>
