@@ -1,5 +1,6 @@
 .showcase-wrapper{
     background: #FDF7F4;
+    
     .frame-wrapper{
         margin-top:10%;
         .slideshow{
@@ -32,7 +33,7 @@
           .slider-content figure{
             width:180px;
             height:120px;
-            border:1px solid #555;
+            // border:1px solid #555;
             overflow:hidden;
             position:absolute;
           }
@@ -67,7 +68,7 @@
           
           .shadow{
             position: absolute;
-            box-shadow: 1px 1px 0px #999 !important;
+            // box-shadow: 1px 1px 0px #999 !important;
            
           }
           .slider-content img{
@@ -110,11 +111,15 @@
 }
 
 .test_{
-  height: 38rem !important;
-  width: 38rem !important;
+  height: 50rem !important;
+  width: 50rem !important;
   border-radius: 50%;
   transform: rotateX(-90deg) translateZ(-11.5rem) translateX(-13.5rem);
-  background: rgba(#1f1f1f, 0.7); 
-  box-shadow: rgba(0, 0, 0, 0.9) 3rem 3rem 3rem;
-  // box-shadow: rgba(0, 0, 0, 3) 0px 54px 55px, rgba(0, 0, 0, 1) 0px -12px 30px, rgba(0, 0, 0, 1) 0px 4px 6px,rgba(0, 0, 0, 1) 0px 12px 13px, rgba(0, 0, 0, 1) 0px -3px 5px;
+  // background: radial-gradient(50% 50% at 50% 50%, rgba(112, 112, 112, 0) 0%, rgba(112, 112, 112, 0.55) 55.73%, rgba(114, 114, 114, 0) 100%);
+  background-color: #fdf7f4;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg %3E%3Ccircle fill='%23fdf7f4' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%23feebe5' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%23fedfd8' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23ffd2cf' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23ffc6c8' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%23fdb9c4' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
+// background-attachment: fixed;
+background-size: cover;
+  box-shadow: none !important;
+  
 }

@@ -7,6 +7,7 @@ import FeedPage from './components/feedpage'
 import './sass/main.scss'
 import Showcase from './components/showcase';
 import TestPage from './components/test';
+import Addkala from './components/add'
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path='/signup' exact component={SignupPage} />
           <Route path='/feed' exact component={FeedPage} />
           <Route path='/showcase' exact component={Showcase} />
-          <Route path='/test' exact component={TestPage} />
+          <Route path='/post' exact component={Addkala} />
         </switch>
       </Router>
     </div>
