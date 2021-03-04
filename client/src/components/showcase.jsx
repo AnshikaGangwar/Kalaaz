@@ -23,7 +23,7 @@ class Showcase extends Component {
                             <figure class="shadow"><img src={temp} /></figure>
                             <figure class="shadow"><img src={temp} /></figure>
                             <figure class="shadow"><img src={temp} /></figure>
-                            <figure class="shadow" ><img src={Np} /></figure>
+                            <figure class="shadow" ><img src={temp} /></figure>
                         </div>    
                             <figure class="shadow test_"></figure>
                         </div>

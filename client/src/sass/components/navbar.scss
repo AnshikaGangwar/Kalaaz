@@ -4,8 +4,10 @@
 .nav_text{
     font-family: $font-2;
     color: #666666;
-    font-size: 2rem; 
+    font-size: 1.5rem; 
     font-weight: 400;
+    margin: 0 auto;
+    //padding-left: 5rem;
 }
 .navbar-toggler-icon{
     background-image: url("../../assets/hamburger.svg") !important;
@@ -13,48 +15,44 @@
 .navbar_container{
     background-color  : #282828 !important;
 }
-.navlink_text{
-  color:#E1DDDD !important;
-  font-weight: 400;
-  a {
-      color: #E1DDDD ;
-      text-decoration: none !important;
-      letter-spacing: 0.15em;
-      
-      display: inline-block;
-      padding: 15px 20px;
-      position: relative;
-      &:hover{
-          color:rgba(#E1DDDD ,0.7);
-      }
-    }
-  a:after {    
-  background: none repeat scroll 0 0 transparent;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 1px;
-  left: 50%;
-  position: absolute;
-  background: #E1DDDD ;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
+.navbar_mydropdown{
+     position: absolute;
+     right: 2rem;
+     top:80%;
+     background:#FFFFFF;
+     padding-top: 0.3rem;
+     border-radius: 5%;
+     transition: all 3000ms ease-in-out;
+  .dropdown_text{
+     font-family: $font-2;
+     color:#666666;
+     padding-left: 1rem;
+     padding-right: 1rem;
+  }
 }
-a:hover:after { 
-  width: 100%; 
-  left: 0; 
- 
+.navbar_pofile_img{
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+  background: transparent;
 }
-}
+.navbar_username{
+  font-family: $font-2;
+    color: #666666;
+    font-size: 1.5rem; 
+    font-weight: 400;
+  padding-left: 1rem !important;
+  margin: 0 auto;
+  vertical-align: middle !important;
 
+}
 .navbar-toggler-icon{
   background-image: url("../../assets/hamburger.svg") !important;
-
 }
 .navbar-toggler{
   &:focus{
       outline:none !important;
-  }
-  
-  
+  } 
 }
+

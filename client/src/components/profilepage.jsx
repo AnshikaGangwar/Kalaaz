@@ -34,25 +34,16 @@ export default class Feedpage extends Component {
             desc: "Abstract art has been with us in one form or another for almost a century now and has proved to be not only a long-standing crux of cultural debate but a self-renewing, vital tradition of creativity.",
            },
         ]
-    };
-
-    navlinks=[{
-       link_name:"ArtShow",
-       link_page:"/showcase" },
-   {
-       link_name:"Profile",
-       link_page:"/profile"
-   }];
-
+    }
     render() {
         return (
            
             <div className="container-fluid feedpage_wrapper vh-100">
                 <div className="navbar-wrapper">
-                <Navbar navlinks={this.navlinks} />
+                <Navbar navlink1="Art Show" navlink2="Logout" />
                 </div>
-               <div className="container"> 
-                <div className="d-flex flex-column align-items-center ">
+               <div className="row"> 
+                <div className="col-md-7 d-flex flex-column align-items-center ">
                   <div className="container feed_col">
                    <div className="container feedpage_titlebar ">
                       <img src={plus}/>  
@@ -77,8 +68,40 @@ export default class Feedpage extends Component {
                    ))}
                    </div>
                 </div>
+               <div className="col-md-5">
+                <div className="row user_row">
+                    <div className="col-md-4">
+                       <div className="userimage_wrapper d-flex flex-column">
+                          <div className="userimage">
+                          <img src={temp} className="userimage" />
+                          </div>
+                          <div className="info_tags ">
+                             <h3 className="info_text">My Arts</h3>
+                             <h3 className="info_text">Liked</h3>
+                             <h3 className="info_text">Settings</h3>
+                          </div>
+
+                       </div>   
+                    </div>
+                    <div className="col-md-8">
+                       
+                       <div className="userdetails_wrapper pr-5">
+                         <h3 className="username">{this.state.name}</h3>
+                         <div className="row mt-4">
+                          
+                            <h3 className="col-md-5 user_follow">{this.state.followers}</h3>
+                            <h3 className="col-md-5 user_follow">{this.state.following}</h3>
+                         </div>
+                         <div className="row">
+                            <h3 className="col-md-5 user_follow">Followers</h3>
+                            <h3 className="col-md-5 user_follow">Following</h3>
+                         </div>
+                       </div>  
+                    </div>
+                </div>
+               </div> 
+              </div> 
               <Footer color="#FDF7F4" />
-            </div>
             </div>
         )
     }
