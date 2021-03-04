@@ -10,15 +10,77 @@
       position:fixed;
       .feedpage_titlebar{
         
-        background: #FFFFFF;
-        width: 42%;
+        background:transparent;
+        width: 22%;
+        border-radius: 0.5rem;
         display:flex;
-        justify-content: space-between;
-       .feed_title{
-           font-family: $font-2;
-           font-size: 2.5rem;
-           color: #333333;
-        }
+        justify-content: center;
+        .toggle_radio{
+            position: relative;
+            background: #FFFFFF;
+            margin: 4px auto;
+            overflow: hidden;
+            padding: 0 !important;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            position: relative;
+            height: 40px;
+            width: 258px;
+          }
+          .toggle_radio > * {
+            float: left;
+          }
+          .toggle_radio input[type=radio]{
+            display: none;
+            /*position: fixed;*/
+          }
+          .toggle_radio label{
+            font-family: $font-2;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #333333;
+            display: block;
+            width: 80px;
+            height: 20px;
+            margin: 2px 2px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 2;
+            text-align: center;
+          
+          
+          }
+          .toggle_option_slider{
+            width: 80px;
+            height: 35px;
+            position: absolute;
+            top: 3px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            -webkit-transition: all .4s ease;
+            -moz-transition: all .4s ease;
+            -o-transition: all .4s ease;
+            -ms-transition: all .4s ease;
+            transition: all .4s ease;
+          }
+          
+          #first_toggle:checked ~ .toggle_option_slider{
+            background: rgba(161, 161, 161, 0.7);
+            left: 3px;
+          }
+          #second_toggle:checked ~ .toggle_option_slider{
+            background:  rgba(161, 161, 161, 0.7);
+            left: 89px;
+          }
+          #third_toggle:checked ~ .toggle_option_slider{
+            background:  rgba(161, 161, 161, 0.7);
+            left: 175px;
+          }
+          
      }
 
    } 
@@ -37,11 +99,39 @@
                 height: 4rem;
                 object-fit: contain;
                 background: #FFFFFF;
+                padding: 0.7rem;
             }
+            .post_username{
+                font-family: $font-4;
+                color: #333333;
+                font-size: 1.5rem;
+                padding: 0.7rem;
+               // padding-top: 1rem;
+            }
+            .postcontent_title{
+                font-family: $font-2;
+                font-weight: 600;
+                font-size:1.5rem;
+                padding:0.5rem;
+                // letter-spacing: 0.15rem;
+            }
+            .postcontent_desc{
+                font-family: $font-2;
+                font-weight: 400;
+                font-size: 1rem;
+                padding-left: 0.5rem;
+                letter-spacing: 0.05rem;
+            }
+          
         }
     }
    
-   
+    .post_heart{
+        height: 2rem ;
+        cursor: pointer;
+        // width: 3rem ;
+       // padding: 0.7em;
+    }  
   
   .user_row{
       //position:fixed;
