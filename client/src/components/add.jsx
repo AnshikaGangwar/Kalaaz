@@ -48,15 +48,15 @@ export default class Addkalaa extends Component {
                   
                        <div className="label_upload_div">
                             <label for="file">
-                                <div className="row">
+                                <div className="row label_innerdiv mt-2">
                                     <img src={upload} className="label_upload_img"/>
                                     <h4 className="upload_text" >Upload from device</h4>
                                 </div>
                             </label>
                             
-                            <h4 className="upload_text" >or</h4>
+                            <span className="upload_text" >or</span>
                             <label for="gfile">
-                                <div className="row">
+                                <div className="row label_innerdiv">
                                     <img src={drive} className="label_upload_img"/>
                                     <h4 className="upload_text" >Get from drive</h4>
                                 </div>
