@@ -31,11 +31,11 @@ export default class Addkalaa extends Component {
     handleChange_visibility = async(event) => {
         await this.setState({ visibility: event.target.value });
     };
-    handleRadio = ({currentTarget:input}) => {
+    handleRadio = async({currentTarget:input}) => {
         const data = {...this.state.data};
         data[input.name] = input.value;
         if(input.name === 'file')data[input.name] = input.files[0]
-        this.setState({ data });
+        await this.setState({ data });
     };
     render() {
         return (

@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 
 //Port
-const PORT = 2710;
+const PORT = 2727;
 
 //.env file
 dotenv.config();
