@@ -1,3 +1,109 @@
-.form_wrapper{
-    width: 60% !important;
+.addkalaa_wrapper{
+    background: #FDF7F4;
+    .addkalaa_container{
+        width :80%;
+        margin-left: 10%;
+        margin-bottom: 7%;
+        .addkalaa_title{
+            margin-top: 7%;
+            font-family: $font-2;
+            font-size: 2.5rem;
+            color: #333333;
+            font-weight: 600;
+        }
+        .addkalaa_label{
+            margin-top: 5%;
+            .label_text{
+                font-family: $font-2;
+                font-size: 1.5rem;
+                color: #333333;
+                font-weight: 500;
+            }
+            .label_upload_div{
+                background: #FDF7F4;
+                border: 2px solid #707070;
+                border-radius: 2%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-left: 5%;
+                width: 30%;
+
+                .upload_text{
+                    font-family: $font-2;
+                    font-size: 1.2rem;
+                    color: #333333;
+                    font-weight: 500;
+                    cursor: pointer;
+                    margin-bottom: 0;
+                    margin-left: 0.5rem;
+                    margin-top: 0.5rem;
+                    
+                }
+                .label_upload_img{
+                    width: 20%;
+                    cursor: pointer;
+                    margin-top: 0.5rem;
+                }
+            }
+            .visibility-wrapper{
+                margin-left: 3rem;
+                display: flex;
+                .dropdown_wrapper{
+                    margin-left: 1rem;
+
+                }
+            }
+        }
+        .addkalaa_card{
+            margin-top: 20px;
+            background: #ffffff;
+            border-radius: 2%;
+            width: 40%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+            .preview_header{
+                align-items: center;
+                .preview_username{
+                    font-family: $font-4;
+                    font-size: 1rem;
+                    color: #333333;
+                    font-weight: 400;
+                }
+                .preview_userimage{
+                    border-radius: 50%;
+                    padding: 0.5rem;
+                    width: 3rem;
+                    height: 3rem;
+                    object-fit: cover;
+                }
+            }
+            .preview_body{
+
+                .preview_img{
+                    
+
+                }
+                .addkalaa-input-wrapper{
+                    padding:0.5rem;
+                    .addkalaa_title{
+                        margin-top: 10px;
+                    }
+                    .addkalaa_description{
+                        margin-top: 10px;
+                    }
+                }
+                
+            }
+        }
+        .button_wrapper{
+            display: flex;
+            align-items: center;
+            margin-left: 10%;
+            .addkalaa_btn{
+
+            }
+
+        }
+    }
 }

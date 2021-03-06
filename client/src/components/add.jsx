@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+
 import Navbar from './navbar';
+import Footer from '../common/footer';
 import upload from '../assets/upload.svg'
 import drive from '../assets/gdrive.svg'
 import temp from '../assets/temp.jpg'
@@ -8,15 +13,30 @@ import temp1 from '../assets/temp1.svg'
 
 export default class Addkalaa extends Component {
     state={
-        username: "anshika_2927"
+        username: "anshika_2927",
+        visibilty: "",
+        data:{
+            title: "",
+            description: "",
+            file: ""
+        }
     }
     navlinks=[{
-        link_name:"Home",
+        link_name:"home",
         link_page:"/" },
     {
-        link_name:"Feed",
+        link_name:"feed",
         link_page:"/feed"
     }];
+    handleChange_visibility = async(event) => {
+        await this.setState({ visibility: event.target.value });
+    };
+    handleRadio = ({currentTarget:input}) => {
+        const data = {...this.state.data};
+        data[input.name] = input.value;
+        if(input.name === 'file')data[input.name] = input.files[0]
+        this.setState({ data });
+    };
     render() {
         return (
             <div className="addkalaa_wrapper">
@@ -43,29 +63,52 @@ export default class Addkalaa extends Component {
                             </label>
                         </div>
                     
-                    <input type="file" name="file" id="file" className="input-from-device" style={{display:"none"}}/>
-                    <input type="file" name="gfile" id="gfile" className="input-from-drive" style={{display:"none"}} />
-                   <h3 className="label_text">Visibility</h3>    
-                   <div>
-                      dropdown
-                   </div>     
+                    <input on type="file" name="file" id="file" className="input-from-device" style={{display:"none"}}/>
+                    <input on type="file" name="file" id="gfile" className="input-from-drive" style={{display:"none"}} />
+                    <div className="visibility-wrapper">
+                            <h3 className="label_text">Visibility</h3>    
+                            <div className="dropdown_wrapper">
+                                <FormControl variant="outlined">
+                                    <InputLabel htmlFor="visibility">Visibility</InputLabel>
+                                    <Select
+                                    native
+                                    value={this.state.visibility}
+                                    onChange={this.handleChange_visibility}
+                                    label="Visibility"
+                                    inputProps={{
+                                        name: 'visibility',
+                                        id: 'visibility',
+                                    }}
+                                    >
+                                    <option value="Public">Public</option>
+                                    <option value="Private">Private</option>
+                                    <option value="Followers">Followers</option>
+                                    </Select>
+                                </FormControl>
+                            </div>   
+                    </div>     
                 </div>
                 <div className="row">
                     <div className="addkalaa_card">
-                           <div className="row preview_header">
+                           <div className="container-fluid row preview_header">
                               <img src={temp} className="img-fluid preview_userimage"/>
                               <h4 className="preview_username">{this.state.username}</h4>
                            </div>
-                           <div className="d-flex flex-column">
+                           <div className="d-flex flex-column preview_body">
                                 <img src={temp1} className="img-fluid preview_img"/>
-                                <input type="text" name="title" className="addkalaa_title" />
-                                <input type="text" name="description" className="addkalaa_description" />
+                                <div className="addkalaa-input-wrapper">
+                                    <input onChange={this.handleRadio} value={this.state.data.title} type="text" name="title" className="addkalaa_title" placeholder="Title" />
+                                    <input onChange={this.handleRadio} value={this.state.data.description} type="textarea" name="description" className="addkalaa_description" placeholder="Description" />
+                                </div>
                            </div>
                     </div>
-                    <Button className="addkalaa_btn">Discard</Button>
-                    <Button className="addkalaa_btn">Post</Button>
+                    <div className="button_wrapper">
+                        <Button className="addkalaa_btn">Discard</Button>
+                        <Button className="addkalaa_btn">Post</Button>
+                    </div>
                 </div>
             </div>
+            <Footer color="transparent" />
             </div> 
         )
     }
