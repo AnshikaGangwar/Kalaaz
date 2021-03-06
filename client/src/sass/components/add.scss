@@ -2,8 +2,9 @@
     background: #FDF7F4;
     .addkalaa_container{
         width :80%;
-        margin-left: 10%;
+        margin-left: 20%;
         margin-bottom: 7%;
+       
         .addkalaa_title{
             margin-top: 7%;
             font-family: $font-2;
@@ -28,24 +29,35 @@
                 justify-content: center;
                 align-items: center;
                 margin-left: 5%;
+            
                 width: 30%;
 
-                .upload_text{
-                    font-family: $font-2;
-                    font-size: 1.2rem;
-                    color: #333333;
-                    font-weight: 500;
-                    cursor: pointer;
-                    margin-bottom: 0;
-                    margin-left: 0.5rem;
-                    margin-top: 0.5rem;
-                    
+                .label_innerdiv{
+
+                    border:2px solid #707070;
+                    background: transparent;
+                    border-radius: 3%;
+                    // justify-content: center;
+                    // align-items: center;
+                    .upload_text{
+                        font-family: $font-2;
+                        font-size: 1.1rem;
+                        color: #333333;
+                        font-weight: 500;
+                        cursor: pointer;
+                        margin-bottom: 0.2;
+                        margin-left: 0.5rem;
+                        margin-top: 0.2rem;
+                        
+                    }
+                    .label_upload_img{
+                        width: 18%;
+                        cursor: pointer;
+                        margin-bottom: 0.2rem;
+                        
+                    }
                 }
-                .label_upload_img{
-                    width: 20%;
-                    cursor: pointer;
-                    margin-top: 0.5rem;
-                }
+                
             }
             .visibility-wrapper{
                 margin-left: 3rem;
@@ -98,10 +110,19 @@
         }
         .button_wrapper{
             display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             margin-left: 10%;
+            width : 30%;
             .addkalaa_btn{
-
+                margin-top: 0.5rem;
+                color:#333333;
+                border: 0.1rem solid #707070;
+                font-family: $font-2;
+                font-size: 1.1rem;
+                font-weight: 600;
+                width:30%;
             }
 
         }
