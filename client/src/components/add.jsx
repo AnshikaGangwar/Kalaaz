@@ -43,9 +43,8 @@ export default class Addkalaa extends Component {
             <Navbar navlinks={this.navlinks}/>
             <div className="addkalaa_container">
                 <h2 className="addkalaa_title">Add Kalaa</h2> 
-                <div className="row addkalaa_label">
+                <div className="row container-fluid addkalaa_label">
                    <h3 className="label_text">Kalaa</h3>
-                  
                        <div className="label_upload_div">
                             <label for="file">
                                 <div className="row label_innerdiv mt-2">
@@ -69,12 +68,10 @@ export default class Addkalaa extends Component {
                             <h3 className="label_text">Visibility</h3>    
                             <div className="dropdown_wrapper">
                                 <FormControl variant="outlined">
-                                    <InputLabel htmlFor="visibility">Visibility</InputLabel>
                                     <Select
                                     native
                                     value={this.state.visibility}
                                     onChange={this.handleChange_visibility}
-                                    label="Visibility"
                                     inputProps={{
                                         name: 'visibility',
                                         id: 'visibility',
@@ -88,7 +85,7 @@ export default class Addkalaa extends Component {
                             </div>   
                     </div>     
                 </div>
-                <div className="row">
+                <div className="row container-fluid">
                     <div className="addkalaa_card">
                            <div className="container-fluid row preview_header">
                               <img src={temp} className="img-fluid preview_userimage"/>
@@ -97,8 +94,8 @@ export default class Addkalaa extends Component {
                            <div className="d-flex flex-column preview_body">
                                 <img src={temp1} className="img-fluid preview_img"/>
                                 <div className="addkalaa-input-wrapper">
-                                    <input onChange={this.handleRadio} value={this.state.data.title} type="text" name="title" className="addkalaa_title" placeholder="Title" />
-                                    <input onChange={this.handleRadio} value={this.state.data.description} type="textarea" name="description" className="addkalaa_description" placeholder="Description" />
+                                    <input onChange={this.handleRadio} value={this.state.data.title} type="text" name="title" className="addkalaa_title_input" placeholder="Title" />
+                                    <textarea onChange={this.handleRadio} value={this.state.data.description} type="textarea" name="description" className="addkalaa_desc_input" placeholder="Description" />
                                 </div>
                            </div>
                     </div>

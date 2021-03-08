@@ -15,11 +15,19 @@ export default class Loginpage extends Component {
         this.setState({place: name});
     }
 
+    navlinks=[
+        {link_name: "Home",
+         link_page: "/"
+        },
+        {link_name: "SignUp",
+          link_page: "/signup"
+        },
+    ]
     render() {
         return (
             
             <div className="container-fluid login_wrapper vh-100">
-               <Navbar navlink1="Home" navlink2="SignUP" navlink1_link="/" navlink2_link="/signup" />
+               <Navbar navlinks={this.navlinks}/>
                  <div className="inner_wrapper">
                    <form className="container login_card">
                       <div className="inner_form w-100">
