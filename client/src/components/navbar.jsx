@@ -4,6 +4,7 @@ import navicon from '../assets/Kalaaz.svg'
 import temp from '../assets/temp.jpg'
 import Cookies from 'js-cookie';
 import {Link} from 'react-router-dom'
+import {base} from '../base'
 
 export default class navbar extends Component {
     state ={
@@ -13,12 +14,13 @@ export default class navbar extends Component {
         this.setState({showdropdown: !this.state.showdropdown});
     };
     render() {
-        const login_flag = Cookies.get("u_id") === undefined ? false : true;
-        const user_name="Anshika_2927";
+        const profile = this.props.profile === undefined ? "": this.props.profile;
+        const login_flag = Cookies.get("uid") === undefined ? false : true;
+        const user_name=this.props.dname;
         const sym=this.state.showdropdown ? "fa-caret-up": "fa-caret-down";
-        const el= login_flag==false ?  <Nav.Link >
+        const el= login_flag ?  <Nav.Link >
         <div className="d-flex flex-row align-items-center justify-content-center pl-3">
-          <img src={temp} className="navbar_pofile_img"/>
+          <img src={base + 'media/profile/' + profile} className="navbar_pofile_img"/>
           <h4 className="navbar_username">{user_name}</h4>
           <i className={"pl-1 fa " + sym} onClick={this.handlearrowclick}></i>
           {this.state.showdropdown && <div className="navbar_mydropdown">
@@ -40,7 +42,10 @@ export default class navbar extends Component {
                     {this.props.navlinks.map(navlink => (
                         <Nav.Link href={navlink.link_page} ><h3 className="nav_text">{navlink.link_name}</h3></Nav.Link>
                     ))}
-                    {el}
+                    <div style={{ margin:'0 auto !important'}}>
+                        {el}
+                    </div>
+                    
                     </Nav>
                 </Navbar.Collapse>
                 </Navbar>

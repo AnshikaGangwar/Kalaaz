@@ -1,0 +1,45 @@
+.edit_wrapper{
+    background: #FDF7F4;
+    .edit_inner{
+        background: transparent;
+        border: 0.15rem solid #707070;
+        border-radius: 0.5rem;
+        width: 90%;
+        padding-bottom: 2rem;
+        .edit_row{
+            //margin-top: 5rem;
+            padding: 3rem;
+            padding-bottom: 0;
+            .edit_col{
+                
+            }
+        }
+        .edit_title{
+            font-family: $font-2;
+            font-size: 2rem;
+        }
+        .edit_name{
+            font-family: $font-4;
+            font-size: 1.5rem;
+        }
+        .edit_text{
+            font-family: $font-5;
+            font-size: 1rem;
+            padding-left: 1rem;
+        }
+        .edit_icon{
+            width:50%;
+            height:50%;
+            padding:0.2rem;
+        }
+        .edit_userimage{
+            border-radius: 50%;
+                width: 6rem;
+                height: 6rem;
+                object-fit: contain;
+                background: #FFFFFF;
+                margin-bottom: 2rem;
+                
+        }
+    }
+}

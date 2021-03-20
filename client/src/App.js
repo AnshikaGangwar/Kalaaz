@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router , Route } from 'react-router-dom'
+import {BrowserRouter as Router , Route, Switch } from 'react-router-dom'
 import Homepage from './components/homepage'
 import LoginPage from './components/loginpage'
 import SignupPage from './components/signuppage'
@@ -9,12 +9,13 @@ import Showcase from './components/showcase';
 import TestPage from './components/test';
 import Addkalaa from './components/add'
 import Profile from './components/profilepage'
+import EditProfile from './components/editprofilepage'
 
 function App() {
   return (
     <div>
       <Router>
-        <switch>
+        <Switch>
           <Route path='/' exact component={Homepage} />
           <Route path='/login' exact component={LoginPage} />
           <Route path='/signup' exact component={SignupPage} />
@@ -22,7 +23,8 @@ function App() {
           <Route path='/showcase' exact component={Showcase} />
           <Route path='/post' exact component={Addkalaa} />
           <Route path='/profile' exact component={Profile} />
-        </switch>
+          <Route path='/editprofile' exact component={EditProfile} />
+        </Switch>
       </Router>
     </div>
   );

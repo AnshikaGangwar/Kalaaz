@@ -1,20 +1,40 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom';
+import Cookies from 'js-cookie'
 import Button from '@material-ui/core/Button'
 import Navbar from './navbar';
 import Footer from '../common/footer';
 import Google from '../assets/google_img.svg'
+import axios from 'axios';
 
 export default class Loginpage extends Component {
     state={
-        username: "",
+        checklogin:Cookies.get("uid"),       
+        data:{
+        email: "",
         password: "",
+        }
     }
-    onChangehandler= (event)=>{
-        const name= event.target.value;
-        const place=event.target.name;
-        this.setState({place: name});
-    }
+    onChangehandler= ({currentTarget:input})=>{
+       const data= {...this.state.data};
+       data[input.name]= input.value;
+       this.setState({data});
 
+    }
+    handleSubmit = async() =>{
+    
+        const payload = {
+            email: this.state.data.email,
+            password: this.state.data.password
+        };
+        const res = await axios.post('http://localhost:2727/api/auth/login', payload);
+        console.log(res);
+        if(res.status === 200) {
+            Cookies.set("uid", res.data._id )
+            this.setState({checklogin: Cookies.get("uid")})
+           // return <Redirect to="/feed" />
+        }
+    }
     navlinks=[
         {link_name: "Home",
          link_page: "/"
@@ -24,6 +44,9 @@ export default class Loginpage extends Component {
         },
     ]
     render() {
+        if( this.state.checklogin){
+            return <Redirect to="/feed" />
+        }
         return (
             
             <div className="container-fluid login_wrapper vh-100">
@@ -32,16 +55,16 @@ export default class Loginpage extends Component {
                    <form className="container login_card">
                       <div className="inner_form w-100">
                        <div className="form-group d-flex flex-column w-100">
-                           <label for="username">Username</label>
-                           <input type="text" name="username"/>
+                           <label for="email">Email</label>
+                           <input type="text" name="email" onChange={this.onChangehandler}/>
                            
                        </div>
                        <div className="form-group d-flex flex-column">
                            <label for="password">Password</label>
-                           <input type="text" name="password"/>
+                           <input type="password" name="password" onChange={this.onChangehandler}/>
                        </div>
                        <div className="mt-5 d-flex">
-                          <Button className="login_btn">Login</Button>
+                          <Button className="login_btn" onClick={this.handleSubmit}>Login</Button>
                           
                           <div className="mt-4">
                           <span className="login_text ">or</span>

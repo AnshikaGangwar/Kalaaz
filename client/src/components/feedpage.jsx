@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import plus from '../assets/plus.svg';
 import heart from '../assets/heart.svg';
 import Navbar from './navbar';
@@ -6,14 +8,17 @@ import Footer from '../common/footer';
 //import temp from '../assets/temp.jpg'
 import temp1 from '../assets/temp1.svg';
 import temp from '../assets/me_2.jpg';
+import axios from 'axios';
 
 export default class Feedpage extends Component {
     state={
+        checklogin: Cookies.get("uid"),
         defaultselection:2,
         heartcolor: '#E1E1E1',
-        username:"anshika_2927",
-        followers:1634,
-        following:2341,
+        currentUser:{
+        dname:"",
+        profile:"",
+        following:"",
         posts: [
            {
               title: "Abstract Art",
@@ -36,6 +41,7 @@ export default class Feedpage extends Component {
             desc: "Abstract art has been with us in one form or another for almost a century now and has proved to be not only a long-standing crux of cultural debate but a self-renewing, vital tradition of creativity.",
            },
         ]
+      } 
     };
 
     navlinks=[{
@@ -52,13 +58,29 @@ export default class Feedpage extends Component {
      this.setState({heartcolor: this.state.heartcolor === "#E1E1E1"? "#E86262": "#E1E1E1" })
   }
 
+
+  componentDidMount = async() => {
+    const {data: currentUser} = await axios.get(`http://localhost:2727/api/getuser/${Cookies.get("uid")}`)
+    console.log(currentUser);
+    const newuser = {...this.state.currentUser};
+    newuser["dname"] = currentUser.dname;
+    newuser["profile"] = currentUser.profile;
+    newuser["following"] = currentUser.following;
+    this.setState({currentUser: newuser});
+  };
+  
+
+
     render() {
        const val = this.state.defaultselection;
+       if(! this.state.checklogin){
+        return <Redirect to="/login" />
+    }
         return (
            
             <div className="container-fluid feedpage_wrapper vh-100">
                 <div className="navbar-wrapper">
-                <Navbar navlinks={this.navlinks} />
+                <Navbar navlinks={this.navlinks} dname={this.state.currentUser.dname} profile={this.state.currentUser.profile}/>
                 </div>
                <div className="container"> 
                 <div className="d-flex flex-column align-items-center ">
@@ -78,13 +100,13 @@ export default class Feedpage extends Component {
                    </div>
                   </div> 
                    <div className="feed_container">
-                   {this.state.posts.map( post => (
+                   {this.state.currentUser.posts.map( post => (
                      
                       <div className="container post_wrapper d-flex flex-column">
                          <div className="d-flex flex-row align-items-center justify-content-between">
                            <div className="row align-items-center">
                                  <img className="img-fluid post_userimage" src={temp}/>
-                                 <h3 className="post_username">{this.state.username}</h3>
+                                 <h3 className="post_username">{this.state.currentUser.dname}</h3>
                            </div>
                             
                             <svg onClick={this.heart_click} className="post_heart" viewBox="0 0 70 57" fill="none" xmlns="http://www.w3.org/2000/svg">
