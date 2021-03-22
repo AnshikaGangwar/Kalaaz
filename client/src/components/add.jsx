@@ -9,16 +9,22 @@ import Footer from '../common/footer';
 import upload from '../assets/upload.svg'
 import drive from '../assets/gdrive.svg'
 import temp from '../assets/temp.jpg'
-import temp1 from '../assets/temp1.svg'
+import Cookies from 'js-cookie'
+import axios from 'axios'
 
 export default class Addkalaa extends Component {
     state={
-        username: "anshika_2927",
-        visibilty: "",
+        
+        username: "",
+        profile: "",
+        
         data:{
             title: "",
             description: "",
-            file: ""
+            visibility: "",
+            file:null,
+            fileURL: " ",
+            profile: ""
         }
     }
     navlinks=[{
@@ -28,19 +34,51 @@ export default class Addkalaa extends Component {
         link_name:"feed",
         link_page:"/feed"
     }];
+
+    componentDidMount = async() => {
+        const {data: currentUser} = await axios.get(`http://localhost:2727/api/getuser/${Cookies.get("uid")}`)
+
+        const dname  = currentUser.dname;
+        const profile = currentUser.profile;
+
+        this.setState({username: dname, profile: profile})
+    }
+
+
     handleChange_visibility = async(event) => {
-        await this.setState({ visibility: event.target.value });
+        const data = {...this.state.data}
+        data['visibility']= event.target.value;
+        await this.setState({ data });
     };
     handleRadio = async({currentTarget:input}) => {
         const data = {...this.state.data};
+        
+        if(input.name === 'file'){
+            data[input.name] = input.files[0]
+            data['fileURL'] = URL.createObjectURL(data[input.name])
+        }
+        else
         data[input.name] = input.value;
-        if(input.name === 'file')data[input.name] = input.files[0]
         await this.setState({ data });
     };
+
+    handleDiscard = async() =>{
+        
+    }
+
+    
+
+
+
+
     render() {
+
+        const imgpreview = this.state.data.fileURL;
+        console.log(this.state.data)
+
         return (
             <div className="addkalaa_wrapper">
-            <Navbar navlinks={this.navlinks}/>
+            <Navbar navlinks={this.navlinks} profile={this.state.profile} dname={this.state.username}/>
             <div className="addkalaa_container">
                 <h2 className="addkalaa_title">Add Kalaa</h2> 
                 <div className="row container-fluid addkalaa_label">
@@ -62,15 +100,15 @@ export default class Addkalaa extends Component {
                             </label>
                         </div>
                     
-                    <input on type="file" name="file" id="file" className="input-from-device" style={{display:"none"}}/>
-                    <input on type="file" name="file" id="gfile" className="input-from-drive" style={{display:"none"}} />
+                    <input onChange={this.handleRadio} type="file" name="file" id="file" className="input-from-device" style={{display:"none"}}/>
+                    <input onChange={this.handleRadio} type="file" name="file" id="gfile" className="input-from-drive" style={{display:"none"}} />
                     <div className="visibility-wrapper">
                             <h3 className="label_text">Visibility</h3>    
                             <div className="dropdown_wrapper">
                                 <FormControl variant="outlined">
                                     <Select
                                     native
-                                    value={this.state.visibility}
+                                    value={this.state.data.visibility}
                                     onChange={this.handleChange_visibility}
                                     inputProps={{
                                         name: 'visibility',
@@ -92,7 +130,8 @@ export default class Addkalaa extends Component {
                               <h4 className="preview_username">{this.state.username}</h4>
                            </div>
                            <div className="d-flex flex-column preview_body">
-                                <img src={temp1} className="img-fluid preview_img"/>
+                                {imgpreview === "" ? <div></div> : <img src={imgpreview} className="img-fluid preview_img"/>}
+                                
                                 <div className="addkalaa-input-wrapper">
                                     <input onChange={this.handleRadio} value={this.state.data.title} type="text" name="title" className="addkalaa_title_input" placeholder="Title" />
                                     <textarea onChange={this.handleRadio} value={this.state.data.description} type="textarea" name="description" className="addkalaa_desc_input" placeholder="Description" />

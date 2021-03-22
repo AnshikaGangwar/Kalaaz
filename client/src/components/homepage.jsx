@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import Navbar from './navbar';
 import multi_img from '../assets/multiple_img.svg'
 import Footer from '../common/footer';
+import Cookies from 'js-cookie';
+import { Redirect } from 'react-router-dom'
 
 export default class Homepage extends Component {
     
     render() {
+        if(Cookies.get("uid")){
+            return <Redirect to="/feed"></Redirect>
+        }
         const navlinks=[
             {link_name: "Login",
               link_page: "/login",  

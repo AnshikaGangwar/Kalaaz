@@ -98,6 +98,7 @@ export default class Editprofilepage extends Component {
 
 
     render() {
+        const imgpreview= this.state.data.fileUrl;
         return (
             <div className=" edit_wrapper">
             <Navbar navlinks={this.navlinks} dname={this.state.user.dname} profile={this.state.user.profile}/>
@@ -141,7 +142,8 @@ export default class Editprofilepage extends Component {
                         </div>
                         <div className="col-md-4 d-flex flex-column align-items-center edit_row pl-0">
                             {/* col2 img */}
-                            <img src={temp}  className="edit_userimage"/>
+                            {imgpreview === "" ? <div></div> :<img src={imgpreview}  className="edit_userimage"/>}
+                            
                             <label for="file">
                             <div>
                             <Button variant="contained" component="span" className="button_edit" >Change Profile Photo</Button>

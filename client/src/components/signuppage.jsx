@@ -51,9 +51,9 @@ export default class Signuppage extends Component {
     render() {
         return (
             
-            <div className="container-fluid login_wrapper ">
+            <div className="container-fluid login_wrapper p-0 ">
                <Navbar navlinks={this.navlinks} />
-                 <div className="inner_wrapper">
+                 <div>
                    <form className="container login_card">
                       <div className="inner_form w-100">
                        <div className="form-group d-flex flex-column ">
@@ -95,7 +95,9 @@ export default class Signuppage extends Component {
                      </div>
                    </form>
                 </div>
+                <div className="pt-5">
                 <Footer color="#FDF7F4" />
+                </div>
             </div>
         )
     }

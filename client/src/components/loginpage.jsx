@@ -49,7 +49,7 @@ export default class Loginpage extends Component {
         }
         return (
             
-            <div className="container-fluid login_wrapper vh-100">
+            <div className="container-fluid login_wrapper vh-100 p-0">
                <Navbar navlinks={this.navlinks}/>
                  <div className="inner_wrapper">
                    <form className="container login_card">
@@ -79,7 +79,9 @@ export default class Loginpage extends Component {
                      </div>
                    </form>
                 </div>
+                <div className="mt-5">
                 <Footer color="#FDF7F4" />
+                </div>
             </div>
         )
     }
