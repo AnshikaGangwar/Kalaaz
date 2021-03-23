@@ -61,7 +61,7 @@ export default class Feedpage extends Component {
 
   componentDidMount = async() => {
     const {data: currentUser} = await axios.get(`http://localhost:2727/api/getuser/${Cookies.get("uid")}`)
-    console.log(currentUser);
+    console.log(Cookies.get("uid"));
     const newuser = {...this.state.currentUser};
     newuser["dname"] = currentUser.dname;
     newuser["profile"] = currentUser.profile;
@@ -76,8 +76,11 @@ export default class Feedpage extends Component {
        if(! this.state.checklogin){
         return <Redirect to="/login" />
     }
+      
+
+
         return (
-           
+      
             <div className="container-fluid feedpage_wrapper vh-100">
                 <div className="navbar-wrapper">
                 <Navbar navlinks={this.navlinks} dname={this.state.currentUser.dname} profile={this.state.currentUser.profile}/>
@@ -99,6 +102,8 @@ export default class Feedpage extends Component {
                 </div>
                    </div>
                   </div> 
+
+                  {this.state.defaultselection}
                    <div className="feed_container">
                    {this.state.currentUser.posts.map( post => (
                      

@@ -6,13 +6,18 @@ import Footer from '../common/footer';
 //import temp from '../assets/temp.jpg'
 import temp1 from '../assets/temp1.svg';
 import temp from '../assets/me_2.jpg';
+import Cookies from 'js-cookie'
+import axios from 'axios'
 
 export default class Feedpage extends Component {
     state={
         defaultselection:2,
         heartcolor: '#E1E1E1',
+        user:{
         username:"anshika_2927",
         name:"Anshika Gangwar",
+        profile: "",
+        },
         followers:1634,
         following:2341,
         posts: [
@@ -50,6 +55,11 @@ export default class Feedpage extends Component {
     changeRadio = e => {
         this.setState({ defaultselection: e.target.value})
     }
+
+    async componentDidMount() {
+        const  {data: currentuser} = await axios.get('')
+    }
+
     render() {
         const val =this.state.defaultselection;
         return (

@@ -24,6 +24,7 @@ function App() {
           <Route path='/post' exact component={Addkalaa} />
           <Route path='/profile' exact component={Profile} />
           <Route path='/editprofile' exact component={EditProfile} />
+          {/* <Route path='/test' exact component={TestPage} /> */}
         </Switch>
       </Router>
     </div>

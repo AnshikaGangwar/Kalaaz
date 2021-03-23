@@ -4,11 +4,25 @@ const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs')
+
+const cookieParser = require('cookie-parser'); 
+const cookieSession = require('cookie-session');
+const refresh = require('passport-oauth2-refresh');
+const sanitize = require('mongo-sanitize');
+
 const User = require('./model/user');
 const auth = require('./routes/auth');
 
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+passport.use(cookieParser());
 
+
+// passport.use(new GoogleStrategy());
+
+// const keys = require("./config/keys");
 
 //Port
 const PORT = 2727;
@@ -34,13 +48,84 @@ app.use(function(req, res, next) {
     next();
   });
   
-// app.get('*', (req,res) =>{
-//       res.sendFile(path.join(__dirname+'/client/build/index.html'));
-//     })
+
     
 //connect to DB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log("Database is connected!"));
   
+
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+})
+passport.deserializeUser((user, done) => {
+  done(null, user);
+})
+
+const strategy = new GoogleStrategy(
+  {
+    clientID: process.env.google_client,
+    clientSecret: process.env.google_clientsecret,
+    callbackURL: "http://localhost:2727/google/callback"
+  },
+  async (accessToken, refreshToken, profile, done) => {
+
+    const email = sanitize(profile.emails[0].value);
+    const userExist = await User.findOne({ email:email });
+    
+    if (userExist) {
+        return done(null,userExist);
+    }
+    else{
+      const salt = await bcrypt.genSalt(10);
+  const uid= await bcrypt.hash(email, salt);
+  const hashedpswd = await bcrypt.hash(profile.id + profile.displayName ,salt);
+  const newuser = new User({
+     name: profile.name.givenName,
+     dname: profile.displayName,
+     email: email,
+     password: hashedpswd,
+     resetPassword:"",
+     art: [],
+     profile:  profile._json.picture,
+     kind: { 
+         provider: profile.provider,
+         uid: profile.id
+     },
+     route: "profile",
+     followers: [],
+     following: [],
+     likedart: []
+
+ }) 
+    const savedUser = await newuser.save();
+    return done(null, savedUser)
+    }
+  }
+)
+
+
+passport.use(strategy);
+refresh.use(strategy);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get("/auth/google", passport.authenticate("google", {
+  scope: ["profile", "email"]
+}));
+
+app.get("/google/callback",passport.authenticate('google' , {failureRedirect : '/login'}),(req,res) =>{
+  
+  res.cookie("uid",req.user._id.toString());
+  res.redirect('/feed');
+});
+
+
+
+
+
+
 app.get('/api/getuser/:id', async(req,res)=>{
   console.log("flag")
   const user = await User.findById(req.params.id);
@@ -57,6 +142,10 @@ app.get('/api/getuser/post/:id', async (req,res)=>{
 });
 app.get('/media/profile/:filename', async(res,req) =>{
   res.sendFile(path.join(__dirname + '/media/profile' + req.params.filename))
+})
+
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 })
 
 app.listen(PORT, function() {

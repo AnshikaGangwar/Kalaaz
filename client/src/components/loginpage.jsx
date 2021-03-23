@@ -7,7 +7,9 @@ import Footer from '../common/footer';
 import Google from '../assets/google_img.svg'
 import axios from 'axios';
 
+
 export default class Loginpage extends Component {
+    
     state={
         checklogin:Cookies.get("uid"),       
         data:{
@@ -21,6 +23,15 @@ export default class Loginpage extends Component {
        this.setState({data});
 
     }
+
+    handleGoogleLogin = async() =>{
+        
+       
+    }
+
+
+
+
     handleSubmit = async() =>{
     
         const payload = {
@@ -69,7 +80,9 @@ export default class Loginpage extends Component {
                           <div className="mt-4">
                           <span className="login_text ">or</span>
                           </div>
-                          <Button variant="contained" className="google_btn">Continue with google <img src={Google}/></Button> 
+                          <a href='http://localhost:2727/auth/google'>
+                          <Button variant="contained" className="google_btn" onClick={this.handleGoogleLogin}>Continue with google <img src={Google}/></Button> 
+                          </a>
                        </div>
                        <div className="d-flex mt-3">
                            <h4>New here, </h4>
