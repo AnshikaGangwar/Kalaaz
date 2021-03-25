@@ -10,6 +10,7 @@ import {base} from '../base';
 
 
 const MyNavbar = props => {
+    console.log(props.profile)
     const [showdropdown, setshowdropdown]= useState(false);
     const history = useHistory();
     

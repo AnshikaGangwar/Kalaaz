@@ -34,10 +34,14 @@ dotenv.config();
 //Middlewaress
 app.use(cors());
 
+// app.options('*', cors()) // enable pre-flight request for DELETE request
+
+
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static('client/build'));
+
 app.use(express.json());
 app.use('/api/auth',auth);
 
@@ -124,12 +128,9 @@ app.get("/google/callback",passport.authenticate('google' , {failureRedirect : '
 
 
 
-
-
 app.get('/api/getuser/:id', async(req,res)=>{
-  console.log("flag")
+  console.log(req.params);
   const user = await User.findById(req.params.id);
-  console.log(user)
   if(!user)
    return res.status(404).send("user not found"); 
    res.status(200).send(user);
@@ -140,10 +141,10 @@ app.get('/api/getuser/post/:id', async (req,res)=>{
    return res.status(404).send("user not found"); 
    res.status(200).send(user.art);
 });
-app.get('/media/profile/:filename', async(res,req) =>{
-  res.sendFile(path.join(__dirname + '/media/profile' + req.params.filename))
+app.get('/media/profile/:filename', async(req,res) =>{
+  res.sendFile(path.join(__dirname + '/media/profile/' + req.params.filename))
 })
-
+app.use(express.static('client/build'));
 app.get('*', (req,res) =>{
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 })
