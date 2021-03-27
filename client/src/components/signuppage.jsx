@@ -31,6 +31,7 @@ export default class Signuppage extends Component {
            data[input.name] = input.value;
            this.setState({data});
     }
+
     handleSubmit = async() =>{
         //   if(this.state.data.password != this.state.data.repassword)
         //   {
@@ -59,7 +60,6 @@ export default class Signuppage extends Component {
                        <div className="form-group d-flex flex-column ">
                            <label for="name">Name</label>
                            <input type="text" name="name" onChange={this.handleChange}/>
-                           
                        </div>
                        <div className="form-group d-flex flex-column ">
                            <label for="email">Email</label>

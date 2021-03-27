@@ -66,7 +66,24 @@ export default class Addkalaa extends Component {
         
     }
 
-    
+    handlePost = async() =>{
+
+        const data = new FormData();
+        data.append( 'title',this.state.data.title);
+        data.append( 'description', this.state.data.description);
+        data.append( 'artist', Cookies.get("uid"));
+        data.append( 'file', this.state.data.file);
+        data.append( 'visibility', this.state.data.visibility);
+           
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+
+        const res = await axios.post('http://localhost:2727/api/post', data,config);
+        console.log(res.status);
+    }
 
 
 
@@ -74,7 +91,7 @@ export default class Addkalaa extends Component {
     render() {
 
         const imgpreview = this.state.data.fileURL;
-        console.log(this.state.data)
+       
 
         return (
             <div className="addkalaa_wrapper">
@@ -140,7 +157,7 @@ export default class Addkalaa extends Component {
                     </div>
                     <div className="button_wrapper">
                         <Button className="addkalaa_btn">Discard</Button>
-                        <Button className="addkalaa_btn">Post</Button>
+                        <Button className="addkalaa_btn" onClick={this.handlePost}>Post</Button>
                     </div>
                 </div>
             </div>

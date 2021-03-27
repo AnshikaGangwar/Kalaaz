@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+// const Art = require('./art');
+
 const date= new Date;
 const localedate= date.toLocaleDateString();
 const art = new mongoose.Schema({
