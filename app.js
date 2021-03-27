@@ -15,6 +15,7 @@ const sanitize = require('mongo-sanitize');
 
 const User = require('./model/user');
 const auth = require('./routes/auth');
+const posts = require('./routes/post');
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 passport.use(cookieParser());
@@ -44,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.json());
 app.use('/api/auth',auth);
-
+app.use('/api/post',posts);
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -144,6 +145,11 @@ app.get('/api/getuser/post/:id', async (req,res)=>{
 app.get('/media/profile/:filename', async(req,res) =>{
   res.sendFile(path.join(__dirname + '/media/profile/' + req.params.filename))
 })
+
+app.get('/media/posts/:filename' , async(req,res) => {
+  res.sendFile(path.join(__dirname + '/media/posts/' + req.params.filename))
+})
+
 app.use(express.static('client/build'));
 app.get('*', (req,res) =>{
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
