@@ -5,6 +5,7 @@ import navicon from '../assets/Kalaaz.svg'
 import temp from '../assets/temp.jpg'
 import Cookies from 'js-cookie';
 import {Link, Redirect} from 'react-router-dom'
+import axios from 'axios';
 import {base} from '../base';
 
 
@@ -20,6 +21,7 @@ const MyNavbar = props => {
 
     const handleLogout = async() => {
         await Cookies.remove("uid");
+        await axios.get('/google/logout')
         history.push('/login');
     }
 

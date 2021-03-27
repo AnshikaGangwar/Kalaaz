@@ -151,7 +151,7 @@ app.get('/media/profile/:filename', async(req,res) =>{
   res.sendFile(path.join(__dirname + '/media/profile/' + req.params.filename))
 })
 
-app.get('/media/posts/:filename' , async(req,res) => {
+app.get('/media/post/:filename' , async(req,res) => {
   res.sendFile(path.join(__dirname + '/media/posts/' + req.params.filename))
 })
 
