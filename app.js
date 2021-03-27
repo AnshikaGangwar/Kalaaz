@@ -115,6 +115,11 @@ refresh.use(strategy);
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/google/logout',(req,res)=>{
+  req.logout();
+  console.log('logged out :)');
+  res.redirect('/login');
+})
 app.get("/auth/google", passport.authenticate("google", {
   scope: ["profile", "email"]
 }));
