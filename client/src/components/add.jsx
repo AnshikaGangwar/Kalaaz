@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-
 import Navbar from './navbar';
 import Footer from '../common/footer';
-import upload from '../assets/upload.svg'
-import drive from '../assets/gdrive.svg'
-import temp from '../assets/temp.jpg'
-import Cookies from 'js-cookie'
-import axios from 'axios'
+import upload from '../assets/upload.svg';
+import drive from '../assets/gdrive.svg';
+import temp from '../assets/temp.jpg';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import { base } from '../base';
 
 export default class Addkalaa extends Component {
     state={
@@ -36,7 +35,7 @@ export default class Addkalaa extends Component {
     }];
 
     componentDidMount = async() => {
-        const {data: currentUser} = await axios.get(`http://localhost:2727/api/getuser/${Cookies.get("uid")}`)
+        const {data: currentUser} = await axios.get(base + `api/getuser/${Cookies.get("uid")}`)
 
         const dname  = currentUser.dname;
         const profile = currentUser.profile;

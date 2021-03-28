@@ -14,4 +14,4 @@ const art = new mongoose.Schema({
     visibility: String,
 })
 
-module.exports = mongoose.model("Art",art);
+module.exports = mongoose.model('Art',art);

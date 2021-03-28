@@ -21,7 +21,8 @@ const MyNavbar = props => {
 
     const handleLogout = async() => {
         await Cookies.remove("uid");
-        await axios.get('/google/logout')
+        const data = await axios.get(base + '/google/logout');
+        // console.log(data);
         history.push('/login');
     }
 

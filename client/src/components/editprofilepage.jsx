@@ -5,6 +5,7 @@ import Footer from '../common/footer';
 import Button from '@material-ui/core/Button'
 import axios from 'axios';
 import Cookies from 'js-cookie'
+import { base } from '../base';
 
 export default class Editprofilepage extends Component {
     state={
@@ -37,7 +38,7 @@ export default class Editprofilepage extends Component {
 
 
      async componentDidMount() {
-        const {data: currentUser} = await axios.get(`http://localhost:2727/api/getuser/${Cookies.get("uid")}`)
+        const {data: currentUser} = await axios.get(base + `api/getuser/${Cookies.get("uid")}`)
         //console.log(currentUser);
         const newuser = {...this.state.user};
         newuser["dname"] = currentUser.dname;

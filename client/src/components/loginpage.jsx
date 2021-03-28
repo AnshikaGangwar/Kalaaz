@@ -6,6 +6,7 @@ import Navbar from './navbar';
 import Footer from '../common/footer';
 import Google from '../assets/google_img.svg'
 import axios from 'axios';
+import { base } from '../base';
 
 
 export default class Loginpage extends Component {
@@ -29,21 +30,16 @@ export default class Loginpage extends Component {
        
     }
 
-
-
-
     handleSubmit = async() =>{
-    
         const payload = {
             email: this.state.data.email,
             password: this.state.data.password
         };
-        const res = await axios.post('http://localhost:2727/api/auth/login', payload);
+        const res = await axios.post(base + 'api/auth/login', payload);
         console.log(res);
         if(res.status === 200) {
             Cookies.set("uid", res.data._id )
             this.setState({checklogin: Cookies.get("uid")})
-           // return <Redirect to="/feed" />
         }
     }
     navlinks=[
@@ -80,7 +76,7 @@ export default class Loginpage extends Component {
                           <div className="mt-4">
                           <span className="login_text ">or</span>
                           </div>
-                          <a href='http://localhost:2727/auth/google'>
+                          <a href={base + 'auth/google'}>
                           <Button variant="contained" className="google_btn" onClick={this.handleGoogleLogin}>Continue with google <img src={Google}/></Button> 
                           </a>
                        </div>

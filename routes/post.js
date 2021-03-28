@@ -1,9 +1,8 @@
 
 const router = require('express').Router();
+const multer = require('multer')
 const art = require('../model/art');
 const User = require('../model/user');
-const multer = require('multer')
-
 
 
 

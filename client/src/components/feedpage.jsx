@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import plus from '../assets/plus.svg';
-import heart from '../assets/heart.svg';
 import Navbar from './navbar';
 import Footer from '../common/footer';
-//import temp from '../assets/temp.jpg'
 import temp1 from '../assets/temp1.svg';
 import temp from '../assets/me_2.jpg';
 import axios from 'axios';
-
+import { base } from '../base';
 export default class Feedpage extends Component {
     state={
         checklogin: Cookies.get("uid"),
@@ -60,7 +57,7 @@ export default class Feedpage extends Component {
 
 
   componentDidMount = async() => {
-    const {data: currentUser} = await axios.get(`http://localhost:2727/api/getuser/${Cookies.get("uid")}`)
+    const {data: currentUser} = await axios.get(base + `api/getuser/${Cookies.get("uid")}`)
     console.log(Cookies.get("uid"));
     const newuser = {...this.state.currentUser};
     newuser["dname"] = currentUser.dname;

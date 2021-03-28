@@ -118,8 +118,8 @@ app.use(passport.session());
 
 app.get('/google/logout',(req,res)=>{
   req.logout();
-  console.log('logged out :)');
-  res.redirect('/login');
+  res.send('logged out :)');
+  return res.redirect('/login');
 })
 app.get("/auth/google", passport.authenticate("google", {
   scope: ["profile", "email"]
@@ -135,7 +135,6 @@ app.get("/google/callback",passport.authenticate('google' , {failureRedirect : '
 
 
 app.get('/api/getuser/:id', async(req,res)=>{
-  console.log(req.params);
   const user = await User.findById(req.params.id);
   if(!user)
    return res.status(404).send("user not found"); 

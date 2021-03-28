@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 class Footer extends Component {
     render() {
-        const login_flag = Cookies.get("u_id") === undefined ? false : true;
+        const login_flag = Cookies.get("uid") === undefined ? false : true;
         const bg = this.props.color === undefined ? "#FDF7F4" : this.props.color;
         return (
             <div className="container-fluid footer_wrapper" style={{ background:`${bg}`}}>

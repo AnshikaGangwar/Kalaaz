@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import Button from '@material-ui/core/Button'
-import {toast} from 'react-toastify'
+import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import {toast} from 'react-toastify';
 import Navbar from './navbar';
 import Footer from '../common/footer';
-import Google from '../assets/google_img.svg'
-import axios from 'axios'
+import Google from '../assets/google_img.svg';
+import axios from 'axios';
+import { base } from '../base';
 
 export default class Signuppage extends Component {
     state= {
@@ -44,7 +45,7 @@ export default class Signuppage extends Component {
               name:this.state.data.name,
               dname:this.state.data.dname
           }
-          const res  = await axios.post('http://localhost:2727/api/auth/register',payload);
+          const res  = await axios.post(base + 'api/auth/register',payload);
           console.log(res);
     }
     
@@ -85,7 +86,7 @@ export default class Signuppage extends Component {
                           <div className="mt-4">
                           <span className="login_text ">or</span>
                           </div>
-                          <Button variant="contained" className="google_btn">Continue with google <img src={Google}/></Button> 
+                          <a href={base + "/auth/google"}><Button variant="contained" className="google_btn">Continue with google <img src={Google}/></Button></a>
                        </div>
                        <div className="d-flex mt-3">
                            <h4>Already a member? </h4>
