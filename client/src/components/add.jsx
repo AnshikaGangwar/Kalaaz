@@ -1,29 +1,30 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
+import {Redirect} from 'react-router-dom'
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Navbar from './navbar';
 import Footer from '../common/footer';
 import upload from '../assets/upload.svg';
 import drive from '../assets/gdrive.svg';
-import temp from '../assets/temp.jpg';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { base } from '../base';
+
 
 export default class Addkalaa extends Component {
     state={
         
         username: "",
         profile: "",
-        
+        posted: false,
+
         data:{
             title: "",
             description: "",
-            visibility: "",
+            visibility: "Public",
             file:null,
             fileURL: " ",
-            profile: ""
         }
     }
     navlinks=[{
@@ -33,6 +34,8 @@ export default class Addkalaa extends Component {
         link_name:"feed",
         link_page:"/feed"
     }];
+
+    baseState= this.state.data;
 
     componentDidMount = async() => {
         const {data: currentUser} = await axios.get(base + `api/getuser/${Cookies.get("uid")}`)
@@ -51,8 +54,7 @@ export default class Addkalaa extends Component {
     };
     handleRadio = async({currentTarget:input}) => {
         const data = {...this.state.data};
-        
-        if(input.name === 'file'){
+        if(input.name === 'file' && input.files['length']!=0){
             data[input.name] = input.files[0]
             data['fileURL'] = URL.createObjectURL(data[input.name])
         }
@@ -61,8 +63,9 @@ export default class Addkalaa extends Component {
         await this.setState({ data });
     };
 
-    handleDiscard = async() =>{
-        
+
+    resetValues = () =>{
+        this.setState({data:this.baseState});
     }
 
     handlePost = async() =>{
@@ -80,17 +83,22 @@ export default class Addkalaa extends Component {
             }
         };
 
-        const res = await axios.post('http://localhost:2727/api/post', data,config);
-        console.log(res.status);
+        const res = await axios.post( base + 'api/post', data,config);
+        
+        this.resetValues();
+        this.setState({posted: true});
+        
     }
 
-
+   
 
 
     render() {
 
         const imgpreview = this.state.data.fileURL;
-       
+        if(this.state.posted === true) {
+            return <Redirect to="/feed"/>
+        }
 
         return (
             <div className="addkalaa_wrapper">
@@ -142,7 +150,7 @@ export default class Addkalaa extends Component {
                 <div className="row container-fluid">
                     <div className="addkalaa_card">
                            <div className="container-fluid row preview_header">
-                              <img src={temp} className="img-fluid preview_userimage"/>
+                              <img src={base + 'media/profile/' + this.state.profile} className="img-fluid preview_userimage"/>
                               <h4 className="preview_username">{this.state.username}</h4>
                            </div>
                            <div className="d-flex flex-column preview_body">
@@ -155,7 +163,7 @@ export default class Addkalaa extends Component {
                            </div>
                     </div>
                     <div className="button_wrapper">
-                        <Button className="addkalaa_btn">Discard</Button>
+                        <Button className="addkalaa_btn" onClick={this.resetValues}>Discard</Button>
                         <Button className="addkalaa_btn" onClick={this.handlePost}>Post</Button>
                     </div>
                 </div>

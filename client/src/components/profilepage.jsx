@@ -32,7 +32,7 @@ export default class Feedpage extends Component {
 
     async componentDidMount() {
         const  {data: currentuser} = await axios.get(`http://localhost:2727/api/getuser/${Cookies.get("uid")}`);
-        console.log(currentuser);
+        
         const data = {...this.state.data}
 
         data['name'] = currentuser.name;
@@ -43,7 +43,7 @@ export default class Feedpage extends Component {
         data['following'] = currentuser.following.length;
 
         this.setState({data});
-        console.log(this.state.data)
+        
     }
 
     render() {
@@ -73,7 +73,7 @@ export default class Feedpage extends Component {
                    </div>
                   </div> 
                    <div className="feed_container">
-                   {arts.map( post => (
+                   {arts.reverse().map( post => (
                      
                       <div className="container post_wrapper d-flex flex-column">
                          <div className="d-flex flex-row justify-content-between align-items-center">
@@ -87,8 +87,8 @@ export default class Feedpage extends Component {
                             </svg>
                          </div>
                          <img className="img-fluid" src={base + "media/post/" + post.filename} />  
-                         <h2>{post.title}</h2>
-                         <h3>{post.description}</h3>                         
+                         <h2 className="postcontent_title">{post.title}</h2>
+                         <h3 className="postcontent_desc">{post.description}</h3>                         
                      </div>
                    ))}
                    </div>

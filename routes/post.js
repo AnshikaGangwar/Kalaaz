@@ -29,15 +29,31 @@ router.post('/', upload.single('file'), async(req,res) => {
         visibility: req.body.visibility,
     })
 
-    const savedPost = await newpost.save();
-    
-
-    const user = await User.findByIdAndUpdate({_id: req.body.artist}, 
+    if(req.body.visibility == "Public")
+    {
+            const savedPost = await newpost.save();
+            const user = await User.findByIdAndUpdate({_id: req.body.artist}, 
+                {
+                    $push:{ art:savedPost }
+                })
+           return res.status(200).send("Success"); 
+    }
+    else
+    {
+        const user = await User.findByIdAndUpdate({_id: req.body.artist}, 
             {
-                $push:{ art:savedPost }
+                $push:{ art:newpost }
             })
-      res.status(200).send("Success");      
+         return res.status(200).send("Success");  
+    } 
+    
+   
        
 })
+
+router.get('/', async (req, res) => {
+     const artarray = await art.find({});
+     res.send(artarray);
+});
 
 module.exports = router;

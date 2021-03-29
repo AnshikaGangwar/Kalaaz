@@ -87,6 +87,13 @@
    .feed_container{
        
          margin-top: 90px;
+         .empty{
+            margin-top: 5rem;
+            height: 45vh;
+            font-family: $font-2;
+            color: #606060;
+
+         }
         .post_wrapper{
             background: #FFFFFF;
             border-radius: 1rem;
