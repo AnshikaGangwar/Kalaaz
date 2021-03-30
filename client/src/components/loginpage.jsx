@@ -25,11 +25,6 @@ export default class Loginpage extends Component {
 
     }
 
-    handleGoogleLogin = async() =>{
-        
-       
-    }
-
     handleSubmit = async() =>{
         const payload = {
             email: this.state.data.email,

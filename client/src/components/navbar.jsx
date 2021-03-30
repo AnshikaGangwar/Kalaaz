@@ -22,7 +22,6 @@ const MyNavbar = props => {
     const handleLogout = async() => {
         await Cookies.remove("uid");
         const data = await axios.get(base + '/google/logout');
-        // console.log(data);
         history.push('/login');
     }
 
@@ -32,7 +31,6 @@ const MyNavbar = props => {
         const sym= showdropdown ? "fa-caret-up": "fa-caret-down";
         const el= login_flag ? <Nav.Link >
         <div className="d-flex flex-row align-items-center justify-content-center pl-3">
-        
           <img src={base + 'media/profile/' + profile} className="navbar_pofile_img"/>
           <h4 className="navbar_username">{user_name}</h4>
           <i className={"pl-1 fa " + sym} onClick={handlearrowclick}></i>
@@ -41,7 +39,6 @@ const MyNavbar = props => {
           </div>}
          </div>  
       </Nav.Link> :<div></div>
-    //   <Nav.Link href="/login" className="nav_text">login</Nav.Link>;
         return (
            <div>
                <Navbar expand="lg" className="navbar nav_wrapper">
