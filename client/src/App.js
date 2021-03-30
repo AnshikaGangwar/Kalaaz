@@ -10,6 +10,7 @@ import TestPage from './components/test';
 import Addkalaa from './components/add'
 import Profile from './components/profilepage'
 import EditProfile from './components/editprofilepage'
+import OthersProfile from './components/othersProfilePage'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/profile' exact component={Profile} />
           <Route path='/editprofile' exact component={EditProfile} />
           <Route path='/test' exact component={TestPage} />
+          <Route path='/oprofile' exact component={OthersProfile} />
         </Switch>
       </Router>
     </div>

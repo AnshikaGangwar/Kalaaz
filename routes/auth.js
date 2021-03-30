@@ -35,6 +35,14 @@ router.post('/register', async (req, res) => {
    } 
 })
 
+router.get('/check/dname/:dname', async (req, res) =>{
+    const data =  await user.findOne({dname: req.params.dname});
+    if(data){
+        res.send("Dname found");
+    }
+    else
+       res.status(200).send("Dname not found");
+})
 router.post('/login', async (req, res) => {
     const gotuser = await user.findOne({email: req.body.email});
     if(!gotuser)

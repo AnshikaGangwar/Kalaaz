@@ -69,7 +69,7 @@ export default class Feedpage extends Component {
     if(val == 3)
      displayPosts = this.state.data.likedPosts === undefined ? [] : this.state.data.likedPosts;
     else if(val == 2)
-     displayPosts = this.state.data.posts === undefined ? [] : this.state.data.posts;
+     displayPosts = this.state.data.posts === undefined ? [] : this.state.data.publicPosts;
     else if(val == 1)
         displayPosts = this.state.data.publicPosts === undefined ? [] : this.state.data.publicPosts;
 
@@ -91,7 +91,7 @@ export default class Feedpage extends Component {
                         <input onClick={this.changeRadio} type="radio" value="1" checked={ val==1 ? true : false } className="toggle_option" id="first_toggle"  name="toggle_option" />
                         <input onClick={this.changeRadio} type="radio" value="2" checked={ val==2 ? true : false } className="toggle_option" id="second_toggle" name="toggle_option" />
                         <input onClick={this.changeRadio} type="radio" value="3" checked={ val==3 ? true : false } className="toggle_option" id="third_toggle"  name="toggle_option" />
-                        <label htmlFor="first_toggle"><p>Add</p></label>
+                        <label htmlFor="first_toggle"><p>Public</p></label>
                         <label htmlFor="second_toggle"><p>Feed</p></label>
                         <label htmlFor="third_toggle"><p>Liked</p></label>
                         <div className="toggle_option_slider"></div>

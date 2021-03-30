@@ -4,7 +4,7 @@ import Footer from '../common/footer';
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import {base} from '../base'
-export default class Feedpage extends Component {
+export default class OthersProfilePage extends Component {
     state={
         defaultselection:2,
         heartcolor: '#E1E1E1',
@@ -39,8 +39,8 @@ export default class Feedpage extends Component {
         data['dname'] = currentuser.dname;
         data['profile'] = currentuser.profile;
         data['art'] = currentuser.art;
-        data['followers'] = currentuser.followers=== undefined ? 0:currentuser.followers.length;
-        data['following'] = currentuser.following=== undefined ? 0:currentuser.following.length;
+        data['followers'] = currentuser.followers.length;
+        data['following'] = currentuser.following.length;
 
         this.setState({data});
         

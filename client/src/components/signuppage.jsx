@@ -15,7 +15,8 @@ export default class Signuppage extends Component {
             dname: "",
             password: "",
             repassword: ""
-        }
+        },
+        checkdname:""
     }
     navlinks=[
         {link_name: "Home",
@@ -32,6 +33,21 @@ export default class Signuppage extends Component {
            data[input.name] = input.value;
            this.setState({data});
     }
+    handlednameChange =async ({currentTarget:input}) =>{
+                  
+        const data = {...this.state.data};
+        data[input.name] = input.value;
+        await this.setState({data});
+        const res = await axios.get(base + `api/auth/check/dname/${input.value}`);
+        console.log(res);
+        if(res.status===404){
+            this.setState({checkdname:"available"});
+        }
+        if(res.status==200){
+            this.setState({checkdname:"notavailable"})
+
+        }
+ }
 
     handleSubmit = async() =>{
         //   if(this.state.data.password != this.state.data.repassword)
@@ -51,6 +67,7 @@ export default class Signuppage extends Component {
     
 
     render() {
+        const checkdname = this.state.checkdname;
         return (
             
             <div className="container-fluid login_wrapper p-0 ">
@@ -69,8 +86,17 @@ export default class Signuppage extends Component {
                        </div>
                        <div className="form-group d-flex flex-column ">
                            <label for="dname">Display Name</label>
-                           <input type="text" name="dname" onChange={this.handleChange}/>
-                           
+                           <input type="text" name="dname" onChange={this.handlednameChange}/>
+                           {checkdname==="available" &&
+                           <div className="dname_check">
+                                <i className="fa fa-check"> username available</i>   
+                           </div>
+                           }
+                           {checkdname==="notavailable" && 
+                           <div className="dname_notcheck">
+                                <i className="fa fa-times"> username not available</i>   
+                           </div>
+                           }                           
                        </div>
                        <div className="form-group d-flex flex-column">
                            <label for="password">Password</label>
