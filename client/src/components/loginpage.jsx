@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import Button from '@material-ui/core/Button'
 import Navbar from './navbar';
@@ -77,7 +77,7 @@ export default class Loginpage extends Component {
                        </div>
                        <div className="d-flex mt-3">
                            <h4>New here, </h4>
-                           <h4 className="pl-1 pr-1 sup_color">Signup </h4> 
+                           <Link to='/signup'><h4 className="pl-1 pr-1 sup_color">Signup </h4></Link> 
                            <h4>to enjoy our services</h4>
                        </div>
                      </div>

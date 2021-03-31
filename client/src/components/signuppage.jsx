@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import {toast} from 'react-toastify';
+import { Link } from 'react-router-dom';
 import Navbar from './navbar';
 import Footer from '../common/footer';
 import Google from '../assets/google_img.svg';
@@ -16,7 +17,8 @@ export default class Signuppage extends Component {
             password: "",
             repassword: ""
         },
-        checkdname:""
+        checkdname:"",
+        checkpass:""
     }
     navlinks=[
         {link_name: "Home",
@@ -27,6 +29,10 @@ export default class Signuppage extends Component {
         },
     ]
 
+    componentDidUpdate=async()=>{
+       
+        
+    }
     handleChange = ({currentTarget:input}) =>{
                   
            const data = {...this.state.data};
@@ -38,18 +44,41 @@ export default class Signuppage extends Component {
         const data = {...this.state.data};
         data[input.name] = input.value;
         await this.setState({data});
-        const res = await axios.get(base + `api/auth/check/dname/${input.value}`);
-        console.log(res);
-        if(res.status===404){
-            this.setState({checkdname:"available"});
-        }
-        if(res.status==200){
-            this.setState({checkdname:"notavailable"})
+        if(this.state.data.dname != ""){
+            const res = await axios.get(base + `api/auth/check/dname/${this.state.data.dname}`);
+            console.log(res);
+            if(res.data=="Dname not found"){
+                this.setState({checkdname:"available"});
+            }
+            else if(res.data=="Dname found"){
+                this.setState({checkdname:"notavailable"})
 
+            }
         }
+        else{
+            this.setState({checkdname:""})
+        }
+
  }
 
-    handleSubmit = async() =>{
+ handlerepasswordChange = async({currentTarget:input}) =>{
+    const data = {...this.state.data};
+    data[input.name] = input.value;
+    await this.setState({data});
+    if(this.state.data.repassword != ""){
+        if(this.state.data.repassword != this.state.data.password){
+            this.setState({checkpass:"not same"});
+        }
+        if(this.state.data.repassword == this.state.data.password){
+            this.setState({checkpass:"same"});
+        }
+    }
+    if(this.state.data.repassword==""){
+        this.setState({checkpass:""})
+    }
+ }   
+ 
+ handleSubmit = async() =>{
         //   if(this.state.data.password != this.state.data.repassword)
         //   {
         //       toast("Confirm password mismatched");
@@ -68,6 +97,8 @@ export default class Signuppage extends Component {
 
     render() {
         const checkdname = this.state.checkdname;
+        const checkpass = this.state.checkpass;
+        console.log(this.state)
         return (
             
             <div className="container-fluid login_wrapper p-0 ">
@@ -77,16 +108,16 @@ export default class Signuppage extends Component {
                       <div className="inner_form w-100">
                        <div className="form-group d-flex flex-column ">
                            <label for="name">Name</label>
-                           <input type="text" name="name" onChange={this.handleChange}/>
+                           <input type="text" name="name" onChange={this.handleChange} required="required"/>
                        </div>
                        <div className="form-group d-flex flex-column ">
                            <label for="email">Email</label>
-                           <input type="email" name="email" onChange={this.handleChange}/>
+                           <input type="email" name="email" onChange={this.handleChange} required="required"/>
                            
                        </div>
                        <div className="form-group d-flex flex-column ">
                            <label for="dname">Display Name</label>
-                           <input type="text" name="dname" onChange={this.handlednameChange}/>
+                           <input type="text" name="dname" onChange={this.handlednameChange} required="required"/>
                            {checkdname==="available" &&
                            <div className="dname_check">
                                 <i className="fa fa-check"> username available</i>   
@@ -100,11 +131,21 @@ export default class Signuppage extends Component {
                        </div>
                        <div className="form-group d-flex flex-column">
                            <label for="password">Password</label>
-                           <input type="password" name="password" onChange={this.handleChange}/>
+                           <input type="password" name="password" onChange={this.handleChange} required="required"/>
                        </div>
                        <div className="form-group d-flex flex-column">
-                           <label for="re-password">Re-enter Password</label>
-                           <input type="password" name="re-password" onChange={this.handleChange}/>
+                           <label for="repassword">Re-enter Password</label>
+                           <input type="password" name="repassword" onChange={this.handlerepasswordChange} required="required"/>
+                           {checkpass==="same" &&
+                           <div className="dname_check">
+                                <i className="fa fa-check"> correct</i>   
+                           </div>
+                           }
+                           {checkpass==="not same" && 
+                           <div className="dname_notcheck">
+                                <i className="fa fa-times"> confirm password should be same as password</i>   
+                           </div>
+                           }  
                        </div>
                        <div className="mt-5 d-flex">
                           <Button className="login_btn" onClick={this.handleSubmit} >Sign Up</Button>
@@ -116,7 +157,7 @@ export default class Signuppage extends Component {
                        </div>
                        <div className="d-flex mt-3">
                            <h4>Already a member? </h4>
-                           <h4 className="pl-1 pr-1 sup_color">Login </h4> 
+                           <Link to='/login'><h4 className="pl-1 pr-1 sup_color">Login </h4> </Link>
                            
                        </div>
                      </div>
