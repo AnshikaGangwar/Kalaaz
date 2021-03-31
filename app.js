@@ -16,6 +16,7 @@ const sanitize = require('mongo-sanitize');
 const User = require('./model/user');
 const auth = require('./routes/auth');
 const posts = require('./routes/post');
+const like = require('./routes/like');
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 passport.use(cookieParser());
@@ -46,6 +47,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
 app.use('/api/auth',auth);
 app.use('/api/post',posts);
+app.use('/api/feed',like);
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
