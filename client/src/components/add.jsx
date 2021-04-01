@@ -69,11 +69,14 @@ export default class Addkalaa extends Component {
     }
 
     handlePost = async() =>{
-
+        const artist = {id: Cookies.get("uid"),
+                        dname: this.state.username,
+                        profile: this.state.profile,
+                         }
         const data = new FormData();
         data.append( 'title',this.state.data.title);
         data.append( 'description', this.state.data.description);
-        data.append( 'artist', Cookies.get("uid"));
+        data.append( 'artist', JSON.stringify(artist));
         data.append( 'file', this.state.data.file);
         data.append( 'visibility', this.state.data.visibility);
            

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import {toast} from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import Navbar from './navbar';
 import Footer from '../common/footer';
 import Google from '../assets/google_img.svg';
@@ -18,7 +18,8 @@ export default class Signuppage extends Component {
             repassword: ""
         },
         checkdname:"",
-        checkpass:""
+        checkpass:"",
+        redirect:false
     }
     navlinks=[
         {link_name: "Home",
@@ -92,10 +93,14 @@ export default class Signuppage extends Component {
           }
           const res  = await axios.post(base + 'api/auth/register',payload);
           console.log(res);
+          this.setState({redirect:true})
     }
     
 
     render() {
+        if(this.state.redirect){
+            return <Redirect to="/login"></Redirect>
+        }
         const checkdname = this.state.checkdname;
         const checkpass = this.state.checkpass;
         console.log(this.state)

@@ -94,7 +94,7 @@ const strategy = new GoogleStrategy(
      password: hashedpswd,
      resetPassword:"",
      art: [],
-     profile:  profile._json.picture,
+     profile: "default_profile.jpg",
      kind: { 
          provider: profile.provider,
          uid: profile.id

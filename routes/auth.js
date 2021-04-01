@@ -15,7 +15,7 @@ router.post('/register', async (req, res) => {
        password: hashedpswd,
        resetPassword:"",
        art: [],
-       profile:"",
+       profile:"default_profile.jpg",
        kind: { 
            provider:"Kalaaz",
            uid: uid

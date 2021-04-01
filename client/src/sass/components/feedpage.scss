@@ -87,11 +87,13 @@
    .feed_container{
        
          margin-top: 90px;
+         width: 80%;
          .empty{
-            margin-top: 5rem;
+            margin-top: 8rem;
             height: 45vh;
             font-family: $font-2;
             color: #606060;
+            text-align: center;
 
          }
         .post_wrapper{
@@ -178,4 +180,7 @@
     z-index: 2;
     width:100%;
     padding-right: 2rem;
+}
+.outer_wrapper{
+  
 }

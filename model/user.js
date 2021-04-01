@@ -1,17 +1,9 @@
 const mongoose = require('mongoose');
+const {ObjectId} = mongoose.Schema.Types;
 
 const date= new Date;
 const localedate= date.toLocaleDateString();
-const art = new mongoose.Schema({
-    title:String,
-    description:String,
-    artist:String,
-    date: { type:String, default:localedate},
-    likescount: String,
-    filename:String,
-    route:String,
-    visibility: String,
-})
+
 const kind = new mongoose.Schema({
     provider:String,
     uid:String
@@ -27,12 +19,12 @@ const user = new mongoose.Schema({
     email:String,
     password:String,
     resetPassword:String,
-    art: [art],
+    art: [{type: ObjectId , ref:"art"}],
     profile:String,
     kind: kind,
     route: String,
     followers: [mate],
     following: [mate],
-    likedart: [String]
+    likedart: [{type: ObjectId , ref:"art"}]
 })
 module.exports = mongoose.model('User', user);

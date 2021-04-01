@@ -18,36 +18,28 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/', upload.single('file'), async(req,res) => {
-   
+    const artist = JSON.parse(req.body.artist);
     const newpost = new art({
         title: req.body.title,
         description: req.body.description,
-        artist: req.body.artist,
-        likescount: "0",
+        artist: {id:artist.id,
+                 dname:artist.dname,
+                 profile:artist.profile
+                },
+        likes: [],
         filename: req.file.filename,
         route: "post",
         visibility: req.body.visibility,
     })
 
-    if(req.body.visibility == "Public")
-    {
-            const savedPost = await newpost.save();
-            const user = await User.findByIdAndUpdate({_id: req.body.artist}, 
-                {
-                    $push:{ art:savedPost }
-                })
-           return res.status(200).send("Success"); 
-    }
-    else
-    {
-        const user = await User.findByIdAndUpdate({_id: req.body.artist}, 
-            {
-                $push:{ art:newpost }
-            })
-         return res.status(200).send("Success");  
-    } 
-    
    
+            const savedPost = await newpost.save();
+            const user = await User.findByIdAndUpdate({_id:artist.id}, 
+                {
+                    $push:{ art:savedPost._id }
+                })
+                            
+           return res.status(200).send("posted"); 
        
 })
 
@@ -55,5 +47,13 @@ router.get('/', async (req, res) => {
      const artarray = await art.find({});
      res.send(artarray);
 });
+
+router.get('/getart/:id', async (req, res) => {
+    const artarray = await art.findById(req.params.id);
+    if(!artarray)
+      res.status(404).send("error");  
+    res.send(artarray);
+});
+
 
 module.exports = router;
