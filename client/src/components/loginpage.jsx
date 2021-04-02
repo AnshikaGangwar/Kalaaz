@@ -54,7 +54,7 @@ export default class Loginpage extends Component {
             <div className="container-fluid login_wrapper vh-100 p-0">
                <Navbar navlinks={this.navlinks}/>
                  <div className="inner_wrapper">
-                   <form className="container login_card">
+                   <form action={this.handleSubmit} className="container login_card">
                       <div className="inner_form w-100">
                        <div className="form-group d-flex flex-column w-100">
                            <label for="email">Email</label>
