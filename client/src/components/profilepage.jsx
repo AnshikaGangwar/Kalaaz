@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Link from 'react-router-dom/Link'
 import Navbar from './navbar';
+import Button from '@material-ui/core/Button';
 import Footer from '../common/footer';
 import Cookies from 'js-cookie'
 import axios from 'axios'
@@ -95,12 +97,27 @@ export default class Feedpage extends Component {
                    </div>
                 </div>
                <div className="col-md-4">
+                 <div className="row searchbar_wrapper">
+                    
+                 <input type="text"
+                           value= {this.state.searchkey}
+                           placeholder="Search"
+                           className="searchbar"
+                       />
+
+                 </div>
                 <div className="row user_row">
+               
                     <div className="col-md-4">
-                       <div className="userimage_wrapper d-flex flex-column">
+                      
+                       <div className="userimage_wrapper d-flex flex-column ">
+                              
                           <div className="userimage">
                           <img src={base + "media/profile/" + this.state.data.profile} className="userimage" />
                           </div>
+                          <Link to="/editprofile">
+                          <Button variant="contained" className="button_edit">Edit Profile</Button>
+                          </Link>
                        </div>   
                     </div>
                     <div className="col-md-8">

@@ -21,8 +21,7 @@ export default class Loginpage extends Component {
     onChangehandler= ({currentTarget:input})=>{
        const data= {...this.state.data};
        data[input.name]= input.value;
-       this.setState({data});
-
+       this.setState({data});    
     }
 
     handleSubmit = async() =>{
@@ -31,7 +30,6 @@ export default class Loginpage extends Component {
             password: this.state.data.password
         };
         const res = await axios.post(base + 'api/auth/login', payload);
-        console.log(res);
         if(res.status === 200) {
             Cookies.set("uid", res.data._id )
             this.setState({checklogin: Cookies.get("uid")})
