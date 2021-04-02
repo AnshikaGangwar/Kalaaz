@@ -109,20 +109,20 @@ export default class Signuppage extends Component {
             <div className="container-fluid login_wrapper p-0 ">
                <Navbar navlinks={this.navlinks} />
                  <div>
-                   <form className="container login_card">
+                   <form action={this.handleSubmit} className="container login_card">
                       <div className="inner_form w-100">
                        <div className="form-group d-flex flex-column ">
                            <label for="name">Name</label>
-                           <input type="text" name="name" onChange={this.handleChange} required="required"/>
+                           <input type="text" name="name" onChange={this.handleChange} required/>
                        </div>
                        <div className="form-group d-flex flex-column ">
                            <label for="email">Email</label>
-                           <input type="email" name="email" onChange={this.handleChange} required="required"/>
+                           <input type="email" name="email" onChange={this.handleChange} required/>
                            
                        </div>
                        <div className="form-group d-flex flex-column ">
                            <label for="dname">Display Name</label>
-                           <input type="text" name="dname" onChange={this.handlednameChange} required="required"/>
+                           <input type="text" name="dname" onChange={this.handlednameChange} required/>
                            {checkdname==="available" &&
                            <div className="dname_check">
                                 <i className="fa fa-check"> username available</i>   
@@ -136,11 +136,11 @@ export default class Signuppage extends Component {
                        </div>
                        <div className="form-group d-flex flex-column">
                            <label for="password">Password</label>
-                           <input type="password" name="password" onChange={this.handleChange} required="required"/>
+                           <input type="password" name="password" onChange={this.handleChange} required/>
                        </div>
                        <div className="form-group d-flex flex-column">
                            <label for="repassword">Re-enter Password</label>
-                           <input type="password" name="repassword" onChange={this.handlerepasswordChange} required="required"/>
+                           <input type="password" name="repassword" onChange={this.handlerepasswordChange} required/>
                            {checkpass==="same" &&
                            <div className="dname_check">
                                 <i className="fa fa-check"> correct</i>   
@@ -153,7 +153,7 @@ export default class Signuppage extends Component {
                            }  
                        </div>
                        <div className="mt-5 d-flex">
-                          <Button className="login_btn" onClick={this.handleSubmit} >Sign Up</Button>
+                          <Button type="submit" className="login_btn" >Sign Up</Button>
                           
                           <div className="mt-4">
                           <span className="login_text ">or</span>
