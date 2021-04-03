@@ -24,7 +24,8 @@ export default class Loginpage extends Component {
        this.setState({data});    
     }
 
-    handleSubmit = async() =>{
+    handleSubmit = async(e) =>{
+        e.preventDefault();
         const payload = {
             email: this.state.data.email,
             password: this.state.data.password
@@ -52,7 +53,7 @@ export default class Loginpage extends Component {
             <div className="container-fluid login_wrapper vh-100 p-0">
                <Navbar navlinks={this.navlinks}/>
                  <div className="inner_wrapper">
-                   <form action={this.handleSubmit} className="container login_card">
+                   <form onSubmit={this.handleSubmit} className="container login_card">
                       <div className="inner_form w-100">
                        <div className="form-group d-flex flex-column w-100">
                            <label for="email">Email</label>
@@ -64,7 +65,7 @@ export default class Loginpage extends Component {
                            <input type="password" name="password" onChange={this.onChangehandler}/>
                        </div>
                        <div className="mt-5 d-flex">
-                          <Button className="login_btn" onClick={this.handleSubmit}>Login</Button>
+                          <Button type="submit" className="login_btn">Login</Button>
                           
                           <div className="mt-4">
                           <span className="login_text ">or</span>

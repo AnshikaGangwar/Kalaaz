@@ -79,7 +79,8 @@ export default class Signuppage extends Component {
     }
  }   
  
- handleSubmit = async() =>{
+ handleSubmit = async(e) =>{
+     e.preventDefault();
         //   if(this.state.data.password != this.state.data.repassword)
         //   {
         //       toast("Confirm password mismatched");
@@ -109,7 +110,7 @@ export default class Signuppage extends Component {
             <div className="container-fluid login_wrapper p-0 ">
                <Navbar navlinks={this.navlinks} />
                  <div>
-                   <form action={this.handleSubmit} className="container login_card">
+                   <form onSubmit={this.handleSubmit} className="container login_card">
                       <div className="inner_form w-100">
                        <div className="form-group d-flex flex-column ">
                            <label for="name">Name</label>

@@ -9,6 +9,7 @@ export default class OthersProfilePage extends Component {
     state={
         defaultselection:2,
         heartcolor: '#E1E1E1',
+        profilename:"",
         data:{
             dname:"",
             name:"",
@@ -32,7 +33,9 @@ export default class OthersProfilePage extends Component {
     }
 
     async componentDidMount() {
-        const  {data: currentuser} = await axios.get(base +`api/getuser/${Cookies.get("uid")}`);
+        const { match: { params } } = this.props;
+        this.setState({ profilename:params.dname })
+        const  {data: currentuser} = await axios.get(base +`api/getprofile/${params.dname}`);
         
         const data = {...this.state.data}
 

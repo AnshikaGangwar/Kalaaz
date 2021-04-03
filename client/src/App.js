@@ -26,7 +26,7 @@ function App() {
           <Route path='/profile' exact component={Profile} />
           <Route path='/editprofile' exact component={EditProfile} />
           <Route path='/test' exact component={TestPage} />
-          <Route path='/oprofile' exact component={OthersProfile} />
+          <Route path='/oprofile/:dname' render={props=> <OthersProfile {...props} key={props.location.key} />} />
         </Switch>
       </Router>
     </div>

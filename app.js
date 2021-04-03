@@ -142,6 +142,12 @@ app.get('/api/getuser/:id', async(req,res)=>{
    return res.status(404).send("user not found"); 
    res.status(200).send(user);
 })
+app.get('/api/getprofile/:dname', async(req,res)=>{
+  const user = await User.findOne({dname:req.params.dname});
+  if(!user)
+   return res.status(404).send("user not found"); 
+   res.status(200).send(user);
+})
 app.get('/api/getuser/post/:id', async (req,res)=>{
   const user = await User.findById(req.params.id);
   if(!user)
@@ -154,6 +160,9 @@ app.get('/media/profile/:filename', async(req,res) =>{
 
 app.get('/media/post/:filename' , async(req,res) => {
   res.sendFile(path.join(__dirname + '/media/posts/' + req.params.filename))
+})
+app.get('/media/assets/:filename' , async(req,res) => {
+  res.sendFile(path.join(__dirname + '/media/assets/' + req.params.filename))
 })
 
 app.use(express.static('client/build'));
