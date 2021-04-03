@@ -86,7 +86,7 @@
    } 
    .feed_container{
        
-         margin-top: 90px;
+         margin-top: 120px;
          width: 80%;
          min-height: 60vh;
          .empty{
@@ -145,7 +145,7 @@
   
   .user_row{
       //position:fixed;
-      margin-top: 50px;
+      margin-top: 70px;
     .userimage_wrapper{
         position:fixed;
         //  margin-top: 10%;
@@ -185,7 +185,9 @@
 }
 .searchbar_wrapper{
   margin-top: 160px;
+  // position: fixed;
   .searchbar{
+    position:fixed;
      background: #ffffff;
   }
 }

@@ -84,6 +84,15 @@ export default class OthersProfilePage extends Component {
                    </div>
                 </div>
                <div className="col-md-4">
+               <div className="row searchbar_wrapper">
+                    
+                    <input type="text"
+                              value= {this.state.searchkey}
+                              placeholder="Search"
+                              className="searchbar"
+                          />
+   
+                    </div>
                 <div className="row user_row">
                     <div className="col-md-4">
                        <div className="userimage_wrapper d-flex flex-column">
