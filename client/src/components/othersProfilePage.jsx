@@ -106,9 +106,8 @@ export default class OthersProfilePage extends Component {
                        <div className="userdetails_wrapper pr-5">
                          <h3 className="username">{this.state.data.name}</h3>
                          <div className="row mt-4">
-                          
                             <h3 className="col-md-5 user_follow">{this.state.data.followers}</h3>
-                            <h3 className="col-md-5 user_follow">{this.state.data.following}</h3>
+                            <h3 className="col-md-5 user_follow">{this.state.data.following}</h3> 
                          </div>
                          <div className="row">
                             <h3 className="col-md-5 user_follow">Followers</h3>

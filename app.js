@@ -17,6 +17,7 @@ const User = require('./model/user');
 const auth = require('./routes/auth');
 const posts = require('./routes/post');
 const like = require('./routes/like');
+// var cloudinary = require('cloudinary');
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 passport.use(cookieParser());
@@ -60,7 +61,11 @@ app.use(function(req, res, next) {
 //connect to DB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log("Database is connected!"));
   
-
+// cloudinary.config({
+//   cloudname: 'ecellmnnit',
+//   api_key: process.env.CLOUDINARY_api_key,
+//   api_secret: process.env.CLOUDINARY_api_secret
+// });
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -133,7 +138,10 @@ app.get("/google/callback",passport.authenticate('google' , {failureRedirect : '
   res.redirect('/feed');
 });
 
-
+// app.get('/api/upload',(req,res)=>{
+//   cloudinary.v2.uploader.upload(path.join(__dirname + "/media/post/1617308425997-me.jpg"), 
+//     function(error, result) {console.log(result, error)});
+// })
 
 
 app.get('/api/getuser/:id', async(req,res)=>{
