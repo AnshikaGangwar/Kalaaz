@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-
-import Cookies from 'js-cookie'
-import axios from 'axios'
-import {base} from '../base'
+import React, { Component } from 'react';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import {base} from '../base';
+import moment from 'moment-js';
 
 export default class individualPost extends Component {
     state = {
@@ -25,7 +25,7 @@ export default class individualPost extends Component {
         const {data: myart} = await axios.get( base + `api/post/getart/${this.props.post_id}`);
         const data = {...this.state.data};
 
-        console.log(myart);
+        
         data['artist_id'] = myart.artist.id;
         data['dname'] = myart.artist.dname;
         data['profile'] = myart.artist.profile;
@@ -34,6 +34,7 @@ export default class individualPost extends Component {
         data['filename'] = myart.filename;
         data['likes'] = myart.likes;
         data['visibility'] = myart.visibility;
+        data['date'] = moment().format("DD/MM/yyyy");
 
         this.setState({data});
   } 

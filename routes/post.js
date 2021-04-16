@@ -30,6 +30,7 @@ router.post('/', upload.single('file'), async(req,res) => {
         filename: req.file.filename,
         route: "post",
         visibility: req.body.visibility,
+        date: req.body.date
     })
 
    
