@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {Navbar,Nav} from 'react-bootstrap'
 import navicon from '../assets/Kalaaz.svg' 
-import temp from '../assets/temp.jpg'
 import Cookies from 'js-cookie';
 import {Link, Redirect} from 'react-router-dom'
 import axios from 'axios';
